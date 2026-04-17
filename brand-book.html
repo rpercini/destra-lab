@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destra Lab — Brand Book</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;300;400;500;700;900&display=swap');
+
+  :root {
+    --black: #0D0D0D;
+    --graphite: #1A1A1A;
+    --graphite-mid: #2C2C2C;
+    --graphite-light: #4A4A4A;
+    --copper: #B87333;
+    --copper-light: #D4956A;
+    --copper-pale: #E8C49A;
+    --off-white: #F5F2EE;
+    --white: #FAFAF8;
+    --grey: #8A8A8A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  /* COVER */
+  .cover {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,115,51,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .cover-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    z-index: 1;
+  }
+
+  .cover-symbol svg {
+    width: 120px; height: 120px;
+  }
+
+  .cover-wordmark {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    letter-spacing: 18px;
+    color: var(--off-white);
+    text-transform: uppercase;
+  }
+
+  .cover-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 6px;
+    color: var(--copper);
+    text-transform: uppercase;
+  }
+
+  .cover-rule {
+    width: 80px; height: 1px;
+    background: var(--copper);
+    margin: 8px 0;
+  }
+
+  .cover-label {
+    position: absolute;
+    bottom: 60px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--graphite-light);
+    text-transform: uppercase;
+  }
+
+  .cover-corner {
+    position: absolute;
+    top: 40px; right: 40px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--graphite-light);
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  .section {
+    min-height: 100vh;
+    padding: 120px 100px;
+    position: relative;
+    page-break-after: always;
+  }
+
+  .section--dark {
+    background: var(--graphite);
+    color: var(--off-white);
+  }
+
+  .section--copper {
+    background: var(--copper);
+    color: var(--black);
+  }
+
+  .section--light {
+    background: var(--off-white);
+  }
+
+  .section--white {
+    background: var(--white);
+  }
+
+  .section-number {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section--dark .section-number { color: var(--copper-light); }
+  .section--copper .section-number { color: var(--black); opacity: 0.5; }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+  }
+
+  .section--dark .section-title { color: var(--white); }
+  .section--copper .section-title { color: var(--black); }
+
+  .section-title span {
+    color: var(--copper);
+    display: block;
+  }
+
+  .section--dark .section-title span { color: var(--copper-light); }
+  .section--copper .section-title span { color: rgba(0,0,0,0.3); }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px; height: 2px;
+    background: var(--copper);
+    margin: 40px 0;
+  }
+
+  .section--dark .divider { background: var(--copper-light); }
+  .section--copper .divider { background: var(--black); }
+
+  /* BODY TEXT */
+  p {
+    font-size: 15px;
+    line-height: 1.9;
+    font-weight: 300;
+    color: var(--graphite-light);
+    max-width: 680px;
+    margin-bottom: 20px;
+  }
+
+  .section--dark p { color: rgba(245,242,238,0.7); }
+  .section--copper p { color: rgba(0,0,0,0.6); }
+
+  p strong {
+    font-weight: 600;
+    color: var(--copper);
+  }
+
+  .section--dark p strong { color: var(--copper-light); }
+  .section--copper p strong { color: var(--black); }
+
+  /* LARGE QUOTE */
+  .blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1.4;
+    font-weight: 300;
+    color: var(--black);
+    border-left: 3px solid var(--copper);
+    padding-left: 40px;
+    margin: 60px 0;
+    max-width: 800px;
+  }
+
+  .section--dark .blockquote {
+    color: var(--off-white);
+    border-color: var(--copper-light);
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 60px;
+  }
+
+  /* CARD */
+  .card {
+    padding: 40px;
+    border: 1px solid rgba(184,115,51,0.2);
+  }
+
+  .section--dark .card {
+    border-color: rgba(184,115,51,0.15);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .card-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section--dark .card-label { color: var(--copper-light); }
+
+  .card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    color: var(--black);
+  }
+
+  .section--dark .card-title { color: var(--off-white); }
+
+  .card p { margin-bottom: 0; font-size: 13px; }
+
+  /* TAG */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--copper);
+    color: var(--copper);
+    margin: 4px;
+  }
+
+  .section--dark .tag {
+    border-color: var(--copper-light);
+    color: var(--copper-light);
+  }
+
+  /* PALETTE */
+  .palette-swatch {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+
+  .palette-name {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .palette-hex {
+    font-size: 11px;
+    font-weight: 300;
+    opacity: 0.7;
+    margin-top: 4px;
+  }
+
+  /* TYPOGRAPHY SHOWCASE */
+  .type-showcase {
+    margin: 40px 0;
+  }
+
+  .type-showcase + .type-showcase {
+    border-top: 1px solid rgba(184,115,51,0.15);
+    padding-top: 40px;
+    margin-top: 0;
+  }
+
+  .type-meta {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 12px;
+  }
+
+  /* FRAGRANCE CARD */
+  .fragrance-card {
+    padding: 60px;
+    background: var(--graphite);
+    color: var(--off-white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fragrance-card::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,115,51,0.06) 0%, transparent 70%);
+  }
+
+  .fragrance-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .fragrance-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--copper-light);
+    margin: 16px 0 32px;
+  }
+
+  .notes-row {
+    display: flex;
+    gap: 40px;
+    margin: 32px 0;
+  }
+
+  .notes-col label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--copper-light);
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .notes-col span {
+    display: block;
+    font-size: 13px;
+    color: rgba(245,242,238,0.75);
+    line-height: 2;
+  }
+
+  /* LOGO PAGE */
+  .logo-display {
+    background: var(--black);
+    padding: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .logo-display--light {
+    background: var(--off-white);
+  }
+
+  /* PERSONA */
+  .persona-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(184,115,51,0.15);
+  }
+
+  .persona-stat:last-child { border-bottom: none; }
+
+  .persona-stat-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+  .section--dark .persona-stat-label { color: var(--copper-light); }
+
+  .persona-stat-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  .persona-stat-desc {
+    font-size: 13px;
+    color: var(--grey);
+    margin: 0;
+  }
+
+  /* PAGE NUMBER */
+  .page-num {
+    position: absolute;
+    bottom: 40px;
+    right: 100px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--graphite-light);
+  }
+
+  .section--dark .page-num { color: rgba(255,255,255,0.2); }
+
+  /* MANIFESTO */
+  .manifesto-line {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 52px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    opacity: 0.08;
+    color: var(--copper);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .manifesto-line.active {
+    opacity: 1;
+    color: var(--off-white);
+  }
+
+  /* PRINT */
+  @media print {
+    .section { page-break-after: always; }
+    .cover { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-corner">Brand Book — 2026</div>
+  <div class="cover-logo">
+    <div class="cover-symbol">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Molecular hexagon structure -->
+        <polygon points="60,8 104,32 104,88 60,112 16,88 16,32" stroke="#B87333" stroke-width="1.5" fill="none"/>
+        <polygon points="60,20 95,39 95,81 60,100 25,81 25,39" stroke="#B87333" stroke-width="0.5" fill="none" opacity="0.3"/>
+        <!-- Nodes at vertices -->
+        <circle cx="60" cy="8" r="3" fill="#B87333"/>
+        <circle cx="104" cy="32" r="3" fill="#B87333"/>
+        <circle cx="104" cy="88" r="3" fill="#B87333"/>
+        <circle cx="60" cy="112" r="3" fill="#B87333"/>
+        <circle cx="16" cy="88" r="3" fill="#B87333"/>
+        <circle cx="16" cy="32" r="3" fill="#B87333"/>
+        <!-- D letterform inside -->
+        <text x="38" y="72" font-family="Montserrat, sans-serif" font-weight="900" font-size="52" fill="#F5F2EE" letter-spacing="-2">D</text>
+        <!-- Subtle L integrated as horizontal rule -->
+        <line x1="38" y1="82" x2="82" y2="82" stroke="#B87333" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+    <div>
+      <div class="cover-wordmark">Destra Lab</div>
+      <div class="cover-rule"></div>
+      <div class="cover-sub">Parfums Exclusifs</div>
+    </div>
+  </div>
+  <div class="cover-label">Documento confidencial — uso interno</div>
+</div>
+
+<!-- ÍNDICE -->
+<div class="section section--light">
+  <span class="section-number">00 — Sumário</span>
+  <h1 class="section-title">O que está<span>neste livro</span></h1>
+  <div class="grid-2">
+    <div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">01</span>
+        <span class="persona-stat-value">Origem & Propósito</span>
+        <p class="persona-stat-desc">Por que a Destra Lab existe. O manifesto fundador. A tensão que nos move.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">02</span>
+        <span class="persona-stat-value">Posicionamento</span>
+        <p class="persona-stat-desc">Categoria, território, promessa central. Onde vivemos na mente do cliente.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">03</span>
+        <span class="persona-stat-value">Identidade de Marca</span>
+        <p class="persona-stat-desc">Prisma completo. Personalidade. Valores. DNA.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">04</span>
+        <span class="persona-stat-value">Público & Persona</span>
+        <p class="persona-stat-desc">Quem é o cliente Destra. O que ele acredita. O que ele recusa.</p>
+      </div>
+    </div>
+    <div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">05</span>
+        <span class="persona-stat-value">Identidade Visual</span>
+        <p class="persona-stat-desc">Logo, paleta, tipografia, tom visual. O sistema completo.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">06</span>
+        <span class="persona-stat-value">Voz & Mensagem</span>
+        <p class="persona-stat-desc">Como a Destra Lab fala. O que diz. O que nunca diz.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">07</span>
+        <span class="persona-stat-value">As Fragrâncias</span>
+        <p class="persona-stat-desc">Exponencial e Live. A narrativa de cada produto.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">08</span>
+        <span class="persona-stat-value">Aplicações</span>
+        <p class="persona-stat-desc">Embalagem, digital, editorial. Regras de uso.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 00 —</div>
+</div>
+
+<!-- 01. ORIGEM E PROPÓSITO -->
+<div class="section section--dark">
+  <span class="section-number">01 — Origem & Propósito</span>
+  <h1 class="section-title">Por que<span>existimos</span></h1>
+  <div class="blockquote">
+    "O brasileiro foi ensinado a pagar pelo nome, não pela substância. Nós viemos corrigir isso."
+  </div>
+  <div class="grid-2">
+    <div>
+      <p>A Destra Lab nasceu de uma constatação simples e poderosa: <strong>o luxo em perfumaria não está no frasco dourado nem na embalagem pesada</strong>. Está na fórmula, nas matérias-primas, na composição olfativa.</p>
+      <p>Nossos fundadores vêm do universo de finanças e investimentos. Entendem de custo-benefício, de análise de valor, de não pagar spread desnecessário. Aplicaram esse raciocínio à perfumaria — e o resultado foi uma validação imediata: <strong>mais de 600 frascos vendidos</strong> antes mesmo de existir uma marca formal.</p>
+      <p>O mercado nos deu a resposta. Agora construímos a marca que esse produto merece.</p>
+    </div>
+    <div>
+      <div class="card">
+        <span class="card-label">Proposição Fundadora</span>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--copper-light); line-height:1.6; margin-bottom:0;">O laboratório que decodifica o luxo e entrega o que importa: a experiência, não a etiqueta.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 01 —</div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="section section--dark" style="padding: 80px 100px; display:flex; flex-direction:column; justify-content:center;">
+  <span class="section-number">01.1 — Manifesto</span>
+  <div style="margin-top:40px;">
+    <div class="manifesto-line">Você não compra</div>
+    <div class="manifesto-line active">O CHEIRO.</div>
+    <div class="manifesto-line">Você não compra</div>
+    <div class="manifesto-line active">A CONQUISTA.</div>
+    <div class="manifesto-line" style="opacity:0.04;">Você não compra a</div>
+    <div class="manifesto-line active">CONFIANÇA.</div>
+    <div class="manifesto-line" style="opacity:0.03;">Você não compra</div>
+    <div class="manifesto-line active">O PADRÃO.</div>
+  </div>
+  <div class="divider" style="margin-top:60px;"></div>
+  <p style="max-width:560px; margin-top:24px; font-size:16px; color:rgba(245,242,238,0.5);">A Destra Lab não vende fragrâncias. Vende o direito de chegar a qualquer lugar com o cheiro certo — sem pagar o tributo da etiqueta.</p>
+  <div class="page-num">— 01.1 —</div>
+</div>
+
+<!-- 02. POSICIONAMENTO -->
+<div class="section section--white">
+  <span class="section-number">02 — Posicionamento</span>
+  <h1 class="section-title">Onde vivemos<span>na mente</span></h1>
+  <div class="grid-2">
+    <div>
+      <p>Não somos mais uma perfumaria popular. Não somos uma marca de luxo inacessível. Somos uma categoria nova — criada por quem entende que <strong>valor real e preço justo não são opostos</strong>.</p>
+      <div class="divider"></div>
+      <div class="card" style="margin-top:0; background:var(--off-white); border-color:rgba(184,115,51,0.3);">
+        <span class="card-label">Categoria Proprietária</span>
+        <div class="card-title">Perfumaria de Resultado</div>
+        <p>Não vendemos sonho. Vendemos performance olfativa comprovada. A comparação é o nosso argumento — não o nosso tabu.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="background: var(--black); color: var(--off-white); border:none; margin-bottom:16px;">
+        <span class="card-label" style="color:var(--copper-light);">Declaração de Posicionamento</span>
+        <p style="color:var(--off-white); font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; line-height:1.6; margin-bottom:0;">
+          "Para quem já aprendeu a não pagar spread — a primeira marca de perfumaria criada por quem entende de valor."
+        </p>
+      </div>
+      <div class="card" style="background: var(--off-white); border-color:rgba(184,115,51,0.3);">
+        <span class="card-label">Only-ness Statement</span>
+        <p style="margin-bottom:0; font-size:13px;">A única marca de perfumaria brasileira que usa metodologia analítica para criar fragrâncias de alto desempenho — para quem recusa pagar pela embalagem.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:80px;">
+    <span class="section-number">02.1 — Mapa de Posicionamento</span>
+    <div class="grid-3" style="margin-top:40px;">
+      <div class="card" style="background: var(--off-white); border-color:rgba(184,115,51,0.3);">
+        <span class="card-label">Abaixo de nós</span>
+        <div class="card-title" style="font-size:14px;">Perfumarias populares</div>
+        <p>Boticário, Natura, O.U.I. — bom custo mas sem aspiração de luxo real.</p>
+      </div>
+      <div class="card" style="background: var(--copper); border:none;">
+        <span class="card-label" style="color:rgba(0,0,0,0.5);">Nosso território</span>
+        <div class="card-title" style="font-size:14px; color:var(--black);">Destra Lab</div>
+        <p style="color:rgba(0,0,0,0.6);">Desempenho de luxo. Preço justo. Análise em vez de hype.</p>
+      </div>
+      <div class="card" style="background: var(--off-white); border-color:rgba(184,115,51,0.3);">
+        <span class="card-label">Acima de nós</span>
+        <div class="card-title" style="font-size:14px;">Luxo inacessível</div>
+        <p>Initio, Louis Vuitton, Maison Margiela — qualidade inegável, preço excludente.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 02 —</div>
+</div>
+
+<!-- 03. IDENTIDADE — PRISMA -->
+<div class="section section--dark">
+  <span class="section-number">03 — Identidade de Marca</span>
+  <h1 class="section-title">DNA<span>Destra Lab</span></h1>
+  <p>O Prisma de Identidade de Kapferer define os seis eixos que compõem o DNA de uma marca. Estes não são aspiracionais — são quem já somos.</p>
+
+  <div class="grid-3" style="margin-top:60px;">
+    <div class="card">
+      <span class="card-label">Físico</span>
+      <div class="card-title">A Presença</div>
+      <p>Frasco limpo, rotulagem técnica, geometria precisa. Matte total. Sem ornamento gratuito. A embalagem diz: o que importa está dentro.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Personalidade</span>
+      <div class="card-title">O Caráter</div>
+      <p>Racional, confiante, direto. Sem afetação. Sabe o que vale e não precisa explicar. Fala para quem entende.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Cultura</span>
+      <div class="card-title">O Sistema de Valores</div>
+      <p>Brasileira, meritocrática, anticonformista inteligente. Acredita em competência, clareza e resultado. Desconfia de hype.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Relacionamento</span>
+      <div class="card-title">O Vínculo</div>
+      <p>Parceiro que te dá acesso ao que era reservado. Não condescendente — colaborativo. Compartilha o conhecimento, não guarda segredo.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Reflexo</span>
+      <div class="card-title">O Cliente Projetado</div>
+      <p>Homem ou mulher que chegou lá por competência, não por herança. Que pesquisa antes de comprar. Que sabe o que quer.</p>
+    </div>
+    <div class="card">
+      <span class="card-label">Mentalização</span>
+      <div class="card-title">O Que Sente</div>
+      <p>"Eu sei o que estou comprando — e estou comprando certo." Confiança sem arrogância. Satisfação intelectual.</p>
+    </div>
+  </div>
+  <div class="page-num">— 03 —</div>
+</div>
+
+<!-- VALORES -->
+<div class="section section--light">
+  <span class="section-number">03.1 — Valores Fundamentais</span>
+  <h1 class="section-title">O que não<span>negociamos</span></h1>
+  <div class="grid-2" style="margin-top:60px;">
+    <div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 01</span>
+        <span class="persona-stat-value">Transparência Radical</span>
+        <p class="persona-stat-desc">Mostramos de onde vem a inspiração. Comparamos abertamente. A honestidade é nossa vantagem competitiva.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 02</span>
+        <span class="persona-stat-value">Desempenho Comprovado</span>
+        <p class="persona-stat-desc">Cada fragrância passa por validação de mercado antes de ser lançada. 600 vendas antes da marca existir é o nosso padrão.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 03</span>
+        <span class="persona-stat-value">Preço com Integridade</span>
+        <p class="persona-stat-desc">Preço justo não é preço baixo. É preço honesto com o que entregamos. Sem markup de vaidade.</p>
+      </div>
+    </div>
+    <div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 04</span>
+        <span class="persona-stat-value">Comunidade de Mérito</span>
+        <p class="persona-stat-desc">Nossa audiência chegou onde está por esforço e inteligência. Nossa marca respeita isso — não cria desejo artificial.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 05</span>
+        <span class="persona-stat-value">Identidade Brasileira</span>
+        <p class="persona-stat-desc">Orgulhosamente nacional. Não copiamos a linguagem do luxo europeu — criamos a nossa própria.</p>
+      </div>
+      <div class="persona-stat">
+        <span class="persona-stat-label">Valor 06</span>
+        <span class="persona-stat-value">Evolução Contínua</span>
+        <p class="persona-stat-desc">Lab não é decorativo. Testamos, iteramos, melhoramos. Cada coleção é uma versão melhor da anterior.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 03.1 —</div>
+</div>
+
+<!-- 04. PERSONA -->
+<div class="section section--dark">
+  <span class="section-number">04 — Público & Persona</span>
+  <h1 class="section-title">Quem é<span>o cliente Destra</span></h1>
+
+  <div class="grid-2">
+    <div>
+      <div class="blockquote" style="font-size:26px;">"Não compro pelo nome. Compro pelo resultado. Se você consegue me mostrar que funciona, eu compro."</div>
+      <p>Nosso cliente não é definido por faixa etária ou classe social. É definido por <strong>mentalidade</strong>. Ele pesquisa antes de decidir. Entende de custo-benefício. Tem orgulho de fazer escolhas inteligentes.</p>
+      <p>Ele chegou na audiência do Floriano por um motivo: <strong>confia em quem fala com clareza sobre valor</strong>. E traz esse mesmo critério para tudo que compra — incluindo perfume.</p>
+    </div>
+    <div>
+      <div class="card">
+        <span class="card-label">Perfil Central</span>
+        <div class="persona-stat" style="padding:16px 0;">
+          <span class="persona-stat-label">Idade</span>
+          <span class="persona-stat-value" style="color:var(--off-white);">25 — 45 anos</span>
+        </div>
+        <div class="persona-stat" style="padding:16px 0;">
+          <span class="persona-stat-label">Perfil financeiro</span>
+          <span class="persona-stat-value" style="color:var(--off-white);">Classe média ascendente</span>
+        </div>
+        <div class="persona-stat" style="padding:16px 0;">
+          <span class="persona-stat-label">Interesse principal</span>
+          <span class="persona-stat-value" style="color:var(--off-white);">Finanças, investimentos, qualidade de vida</span>
+        </div>
+        <div class="persona-stat" style="padding:16px 0; border:none;">
+          <span class="persona-stat-label">Comportamento de compra</span>
+          <span class="persona-stat-value" style="color:var(--off-white);">Pesquisa, compara, decide com confiança</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:60px;">
+    <span class="section-number">O que ele acredita / O que ele recusa</span>
+    <div class="grid-2" style="margin-top:32px;">
+      <div>
+        <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--copper-light); margin-bottom:16px;">Ele acredita que</p>
+        <div class="tag">Mérito importa</div>
+        <div class="tag">Qualidade tem preço justo</div>
+        <div class="tag">Trabalho gera resultado</div>
+        <div class="tag">Conhecimento é poder</div>
+        <div class="tag">Brasil pode ser referência</div>
+        <div class="tag">Família e valores sólidos</div>
+      </div>
+      <div>
+        <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--copper-light); margin-bottom:16px;">Ele recusa</p>
+        <div class="tag" style="border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.3);">Pagar por nome vazio</div>
+        <div class="tag" style="border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.3);">Marketing de manipulação</div>
+        <div class="tag" style="border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.3);">Marcas sem substância</div>
+        <div class="tag" style="border-color:rgba(255,255,255,0.15); color:rgba(255,255,255,0.3);">Discurso sem entrega</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 04 —</div>
+</div>
+
+<!-- 05. IDENTIDADE VISUAL -->
+<div class="section section--white">
+  <span class="section-number">05 — Identidade Visual</span>
+  <h1 class="section-title">O sistema<span>visual</span></h1>
+  <p>A linguagem visual da Destra Lab é construída sobre um princípio: <strong>técnico-elegante</strong>. Não é o luxo europeu clássico — não somos Dior. Não é brutalismo pesado — não somos uma construtora. Somos um laboratório de precisão com alma brasileira.</p>
+
+  <!-- LOGO -->
+  <div style="margin-top:60px;">
+    <span class="section-number">05.1 — Símbolo & Logotipo</span>
+
+    <div class="grid-2" style="margin-top:32px;">
+      <div class="logo-display">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+          <svg viewBox="0 0 120 120" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,8 104,32 104,88 60,112 16,88 16,32" stroke="#B87333" stroke-width="1.5" fill="none"/>
+            <polygon points="60,20 95,39 95,81 60,100 25,81 25,39" stroke="#B87333" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <circle cx="60" cy="8" r="3" fill="#B87333"/>
+            <circle cx="104" cy="32" r="3" fill="#B87333"/>
+            <circle cx="104" cy="88" r="3" fill="#B87333"/>
+            <circle cx="60" cy="112" r="3" fill="#B87333"/>
+            <circle cx="16" cy="88" r="3" fill="#B87333"/>
+            <circle cx="16" cy="32" r="3" fill="#B87333"/>
+            <text x="38" y="72" font-family="Montserrat, sans-serif" font-weight="900" font-size="52" fill="#F5F2EE" letter-spacing="-2">D</text>
+            <line x1="38" y1="82" x2="82" y2="82" stroke="#B87333" stroke-width="1.5" opacity="0.4"/>
+          </svg>
+          <div style="text-align:center;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; letter-spacing:10px; color:#F5F2EE; text-transform:uppercase;">DESTRA LAB</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; letter-spacing:4px; color:#B87333; margin-top:6px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-display logo-display--light">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+          <svg viewBox="0 0 120 120" width="100" height="100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="60,8 104,32 104,88 60,112 16,88 16,32" stroke="#B87333" stroke-width="1.5" fill="none"/>
+            <polygon points="60,20 95,39 95,81 60,100 25,81 25,39" stroke="#B87333" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <circle cx="60" cy="8" r="3" fill="#B87333"/>
+            <circle cx="104" cy="32" r="3" fill="#B87333"/>
+            <circle cx="104" cy="88" r="3" fill="#B87333"/>
+            <circle cx="60" cy="112" r="3" fill="#B87333"/>
+            <circle cx="16" cy="88" r="3" fill="#B87333"/>
+            <circle cx="16" cy="32" r="3" fill="#B87333"/>
+            <text x="38" y="72" font-family="Montserrat, sans-serif" font-weight="900" font-size="52" fill="#1A1A1A" letter-spacing="-2">D</text>
+            <line x1="38" y1="82" x2="82" y2="82" stroke="#B87333" stroke-width="1.5" opacity="0.4"/>
+          </svg>
+          <div style="text-align:center;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:22px; letter-spacing:10px; color:#1A1A1A; text-transform:uppercase;">DESTRA LAB</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11px; letter-spacing:4px; color:#B87333; margin-top:6px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:24px;">
+      <div>
+        <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-bottom:8px;">Versão Principal</p>
+        <p style="font-size:13px;">Fundo escuro com símbolo cobre e tipografia off-white. Para uso em peças premium, embalagens, tampas de frasco.</p>
+      </div>
+      <div>
+        <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-bottom:8px;">Versão Positiva</p>
+        <p style="font-size:13px;">Para fundos claros. Símbolo cobre, tipografia grafite. Uso em papelaria, tags, inserções editoriais.</p>
+      </div>
+      <div>
+        <p style="font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-bottom:8px;">Área de Proteção</p>
+        <p style="font-size:13px;">Espaço mínimo ao redor do logo equivalente à altura da letra "D" do wordmark. Nunca comprimir ou distorcer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 05 —</div>
+</div>
+
+<!-- PALETA -->
+<div class="section section--light">
+  <span class="section-number">05.2 — Paleta de Cores</span>
+  <h1 class="section-title">Cores<span>da marca</span></h1>
+
+  <div class="grid-4" style="margin-top:60px;">
+    <div>
+      <div class="palette-swatch" style="background:#0D0D0D;">
+        <span class="palette-name" style="color:#F5F2EE;">Preto Destra</span>
+        <span class="palette-hex" style="color:#F5F2EE;">#0D0D0D</span>
+      </div>
+      <p style="margin-top:16px; font-size:13px;"><strong style="color:var(--black);">Cor primária.</strong> Fundos principais, tipografia em negativo, força e autoridade.</p>
+    </div>
+    <div>
+      <div class="palette-swatch" style="background:#B87333;">
+        <span class="palette-name" style="color:#0D0D0D;">Cobre Destra</span>
+        <span class="palette-hex" style="color:#0D0D0D;">#B87333</span>
+      </div>
+      <p style="margin-top:16px; font-size:13px;"><strong style="color:var(--black);">Cor de acento.</strong> Símbolo, detalhes, dividers, destaques. O "ouro" do laboratório.</p>
+    </div>
+    <div>
+      <div class="palette-swatch" style="background:#1A1A1A;">
+        <span class="palette-name" style="color:#F5F2EE;">Grafite</span>
+        <span class="palette-hex" style="color:#F5F2EE;">#1A1A1A</span>
+      </div>
+      <p style="margin-top:16px; font-size:13px;"><strong style="color:var(--black);">Secundária escura.</strong> Fundos alternativos, cards em dark mode, backgrounds de seção.</p>
+    </div>
+    <div>
+      <div class="palette-swatch" style="background:#F5F2EE; border:1px solid #E8E4DE;">
+        <span class="palette-name" style="color:#1A1A1A;">Off-White</span>
+        <span class="palette-hex" style="color:#1A1A1A;">#F5F2EE</span>
+      </div>
+      <p style="margin-top:16px; font-size:13px;"><strong style="color:var(--black);">Base clara.</strong> Fundos de página, tipografia em positivo, espaço negativo.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:60px; padding:40px; background:var(--black); display:flex; align-items:center; gap:60px;">
+    <span style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.3); white-space:nowrap;">Combinações aprovadas</span>
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:32px; height:32px; background:#0D0D0D; border:2px solid #B87333;"></div>
+        <span style="color:#B87333; font-size:11px; letter-spacing:2px;">Preto + Cobre</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:32px; height:32px; background:#F5F2EE;"></div>
+        <span style="color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:2px;">Off-white + Cobre</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="width:32px; height:32px; background:#B87333;"></div>
+        <span style="color:rgba(255,255,255,0.4); font-size:11px; letter-spacing:2px;">Cobre sólido (uso restrito)</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 05.2 —</div>
+</div>
+
+<!-- TIPOGRAFIA -->
+<div class="section section--white">
+  <span class="section-number">05.3 — Tipografia</span>
+  <h1 class="section-title">O sistema<span>tipográfico</span></h1>
+
+  <div class="type-showcase">
+    <p class="type-meta">Tipografia Primária — Montserrat Black / Bold</p>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:80px; letter-spacing:-3px; line-height:1; color:var(--black); text-transform:uppercase;">DESTRA<br>LAB</div>
+    <p style="margin-top:16px; font-size:13px; color:var(--grey);">Títulos, wordmark, nomes de produto, chamadas principais. Peso 900 (Black). Maiúsculas. Kerning negativo em títulos grandes.</p>
+  </div>
+
+  <div class="type-showcase">
+    <p class="type-meta">Tipografia Secundária — Cormorant Garamond Italic</p>
+    <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:52px; color:var(--black); line-height:1.2;">Parfums Exclusifs<br><span style="color:var(--copper);">Laboratório de Fragrâncias</span></div>
+    <p style="margin-top:16px; font-size:13px; color:var(--grey);">Subtítulos, tags de coleção, frases de efeito. Cria contraste com a sans-serif. Nunca em maiúsculas.</p>
+  </div>
+
+  <div class="type-showcase">
+    <p class="type-meta">Tipografia de Corpo — Montserrat Light / Regular</p>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:300; font-size:16px; line-height:1.9; color:var(--graphite-light); max-width:600px;">O texto corrido da Destra Lab usa Montserrat Light com line-height generoso. A leitura deve ser fácil e respirada. Nunca comprimida. Parágrafos curtos. Sem jargão desnecessário.</div>
+    <p style="margin-top:16px; font-size:13px; color:var(--grey);">Corpo de texto, descrições, emails, site. Peso 300 (Light). Tamanho mínimo 14px digital, 10pt impresso.</p>
+  </div>
+
+  <div class="type-showcase">
+    <p class="type-meta">Labels & Micro — Montserrat Regular + Espaçamento</p>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:400; font-size:11px; letter-spacing:5px; text-transform:uppercase; color:var(--copper);">NOTAS DE TOPO — BERGAMOTA — ESPECIARIAS — ÁMBAR</div>
+    <p style="margin-top:16px; font-size:13px; color:var(--grey);">Etiquetas, notas olfativas, categorias, metadados. 9–11px, letter-spacing 3–5px, sempre maiúsculas, sempre cobre.</p>
+  </div>
+  <div class="page-num">— 05.3 —</div>
+</div>
+
+<!-- 06. VOZ -->
+<div class="section section--dark">
+  <span class="section-number">06 — Voz & Mensagem</span>
+  <h1 class="section-title">Como<span>falamos</span></h1>
+  <div class="grid-2">
+    <div>
+      <p>A voz da Destra Lab é de quem sabe — e não precisa provar. <strong>Direta, sem efeito</strong>. Não usamos o vocabulário da perfumaria de luxo europeia (etéreo, envolvente, misterioso). Usamos o vocabulário de quem entende de valor.</p>
+      <div class="divider"></div>
+      <div class="grid-2" style="margin-top:0; gap:24px;">
+        <div class="card">
+          <span class="card-label">Somos</span>
+          <div class="card-title" style="font-size:13px; line-height:2;">Diretos<br>Confiantes<br>Técnicos<br>Brasileiros<br>Honestos</div>
+        </div>
+        <div class="card" style="border-color:rgba(255,255,255,0.1);">
+          <span class="card-label" style="color:rgba(255,255,255,0.3);">Nunca somos</span>
+          <div class="card-title" style="font-size:13px; line-height:2; color:rgba(245,242,238,0.3);">Arrogantes<br>Exóticos<br>Manjericosos<br>Subservientes<br>Complexos</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--copper-light); margin-bottom:24px;">Exemplos de tom de voz</p>
+
+      <div class="card" style="margin-bottom:16px;">
+        <span class="card-label" style="color:rgba(255,255,255,0.3);">Errado ✗</span>
+        <p style="font-style:italic; color:rgba(245,242,238,0.4); margin-bottom:0; font-size:13px;">"Uma jornada olfativa que transcende os sentidos e te transporta para mundos inexplorados..."</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px; border-color:var(--copper-light);">
+        <span class="card-label">Certo ✓</span>
+        <p style="margin-bottom:0; font-size:13px; color:var(--off-white);">"Inspirado no Oud for Greatness da Initio. Mesmas notas principais. Um terço do preço. Testado por 600 pessoas antes do lançamento."</p>
+      </div>
+
+      <div class="card" style="border-color:var(--copper-light);">
+        <span class="card-label">Certo ✓</span>
+        <p style="margin-bottom:0; font-size:13px; color:var(--off-white);">"Exponencial. Para quem já entendeu que crescimento real não precisa de etiqueta de luxo."</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:60px;">
+    <span class="section-number">06.1 — Naming das Fragrâncias</span>
+    <p style="margin-top:24px;">O sistema de naming da Destra Lab usa <strong>conceitos financeiros e de crescimento</strong> como nomes. Isso não é acidental — é identidade. Cada nome é uma declaração de mentalidade, não apenas um nome de produto.</p>
+    <div class="grid-3" style="margin-top:32px;">
+      <div class="card">
+        <span class="card-label">Lançadas</span>
+        <div class="card-title">Exponencial</div>
+        <p>Crescimento composto. Resultado que multiplica. Para quem pensa longo prazo.</p>
+      </div>
+      <div class="card">
+        <span class="card-label">Lançadas</span>
+        <div class="card-title">Live</div>
+        <p>Viver a plenitude do momento. O presente como investimento.</p>
+      </div>
+      <div class="card" style="border-style:dashed; opacity:0.5;">
+        <span class="card-label">Território futuro</span>
+        <div class="card-title">Reserva / Tese / Ativo / Vértice</div>
+        <p>Próximas fragrâncias seguem o mesmo universo conceitual.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 06 —</div>
+</div>
+
+<!-- 07. FRAGRÂNCIAS -->
+<div class="section section--white">
+  <span class="section-number">07 — As Fragrâncias</span>
+  <h1 class="section-title">A coleção<span>fundadora</span></h1>
+
+  <div class="fragrance-card" style="margin-bottom:24px;">
+    <span style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--copper-light);">N°001 — Coleção Fundadora</span>
+    <div class="fragrance-name" style="margin-top:16px;">EXPONENCIAL</div>
+    <div class="fragrance-subtitle">Inspirado em Oud for Greatness — Initio Parfums Privés</div>
+
+    <div class="notes-row">
+      <div class="notes-col">
+        <label>Notas de Topo</label>
+        <span>Bergamota</span>
+        <span>Especiarias negras</span>
+        <span>Açafrão</span>
+      </div>
+      <div class="notes-col">
+        <label>Notas de Coração</label>
+        <span>Oud</span>
+        <span>Rosa</span>
+        <span>Âmbar</span>
+      </div>
+      <div class="notes-col">
+        <label>Notas de Fundo</label>
+        <span>Almíscar</span>
+        <span>Sândalo</span>
+        <span>Baunilha defumada</span>
+      </div>
+      <div class="notes-col">
+        <label>Perfil</label>
+        <span>Oriental</span>
+        <span>Amadeirado</span>
+        <span>Intenso</span>
+      </div>
+    </div>
+
+    <div class="divider" style="background:var(--copper-light);"></div>
+    <p style="color:rgba(245,242,238,0.6); max-width:560px; font-size:14px;">
+      <strong style="color:var(--copper-light);">A história do nome:</strong> Exponencial não é só uma fragrância. É uma declaração. Crescimento composto — o conceito que transforma quem entende de investimento. Quem usa Exponencial carrega o cheiro de quem chegou lá.
+    </p>
+  </div>
+
+  <div class="fragrance-card" style="background: var(--graphite-mid);">
+    <span style="font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--copper-light);">N°002 — Coleção Fundadora</span>
+    <div class="fragrance-name" style="margin-top:16px;">LIVE</div>
+    <div class="fragrance-subtitle">Inspirado em Imagination — Louis Vuitton</div>
+
+    <div class="notes-row">
+      <div class="notes-col">
+        <label>Notas de Topo</label>
+        <span>Limão siciliano</span>
+        <span>Bergamota</span>
+        <span>Grapefruit</span>
+      </div>
+      <div class="notes-col">
+        <label>Notas de Coração</label>
+        <span>Jasmim</span>
+        <span>Iris</span>
+        <span>Almíscar branco</span>
+      </div>
+      <div class="notes-col">
+        <label>Notas de Fundo</label>
+        <span>Cedro</span>
+        <span>Vetiver</span>
+        <span>Musgo</span>
+      </div>
+      <div class="notes-col">
+        <label>Perfil</label>
+        <span>Fresco</span>
+        <span>Aquático</span>
+        <span>Elegante</span>
+      </div>
+    </div>
+
+    <div class="divider" style="background:var(--copper-light);"></div>
+    <p style="color:rgba(245,242,238,0.6); max-width:560px; font-size:14px;">
+      <strong style="color:var(--copper-light);">A história do nome:</strong> Live é o lembrete de que dinheiro é meio, não fim. A fragrância do momento presente — leve, fresca, presente. Para quem trabalha para viver, não o contrário.
+    </p>
+  </div>
+  <div class="page-num">— 07 —</div>
+</div>
+
+<!-- 08. APLICAÇÕES -->
+<div class="section section--light">
+  <span class="section-number">08 — Aplicações</span>
+  <h1 class="section-title">O sistema<span>em uso</span></h1>
+
+  <div class="grid-2">
+    <div>
+      <div class="card" style="background:var(--black); color:var(--off-white); border:none; margin-bottom:16px;">
+        <span class="card-label" style="color:var(--copper-light);">Embalagem — Frasco</span>
+        <div class="card-title" style="color:var(--off-white);">Frasco Minimalista</div>
+        <p style="color:rgba(245,242,238,0.6);">Frasco preto fosco, retangular. Gravação do símbolo hexagonal em baixo relevo cobre. Tampa metálica matte. Sem rótulo adesivo — serigrafia direta. Volume: 50ml e 100ml.</p>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <span class="card-label">Embalagem — Caixa</span>
+        <div class="card-title">Caixa Fechada</div>
+        <p>Papelão rígido off-white. Logo em hot stamping cobre. Nome da fragrância em Montserrat Black. Interior em veludo preto. Lacre com fita de cetim cobre.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-label">Digital — Instagram</span>
+        <div class="card-title">Grid Técnico-Elegante</div>
+        <p>Alternância entre posts de produto (fundo preto), conteúdo educativo (fundo off-white) e stories comparativos. Nunca fundo colorido. Proporção 1:1 para posts, 4:5 para reels.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="margin-bottom:16px;">
+        <span class="card-label">Tom Visual — Fotografia</span>
+        <div class="card-title">Linguagem Fotográfica</div>
+        <p>Fundo escuro ou branco puro. Sem gradientes. Luz direcional dura — cria sombras geométricas. Produto como protagonista absoluto. Sem flores, sem natureza, sem viagens. Texturas: mármore escuro, metal, vidro.</p>
+      </div>
+
+      <div class="card" style="background:var(--copper); border:none; margin-bottom:16px;">
+        <span class="card-label" style="color:rgba(0,0,0,0.4);">Regra de Ouro</span>
+        <div class="card-title" style="color:var(--black);">Nunca pareça luxo europeu</div>
+        <p style="color:rgba(0,0,0,0.6);">Toda vez que uma peça parecer Chanel, Dior ou Hermès — refaça. Somos brasileiros, técnicos e diretos. Nossa identidade é nossa vantagem, não nossa limitação.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-label">Papelaria</span>
+        <div class="card-title">Cartão & Nota</div>
+        <p>Cartão de visita: preto fosco, símbolo em cobre, dados mínimos. Nota de entrega: off-white, logo em um canto, mensagem manuscrita simulada em Cormorant Italic.</p>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">— 08 —</div>
+</div>
+
+<!-- BACK COVER -->
+<div class="cover" style="min-height:100vh;">
+  <div style="text-align:center; z-index:1;">
+    <svg viewBox="0 0 80 80" width="60" height="60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,5 70,22 70,58 40,75 10,58 10,22" stroke="#B87333" stroke-width="1" fill="none" opacity="0.6"/>
+      <circle cx="40" cy="5" r="2" fill="#B87333" opacity="0.6"/>
+      <circle cx="70" cy="22" r="2" fill="#B87333" opacity="0.6"/>
+      <circle cx="70" cy="58" r="2" fill="#B87333" opacity="0.6"/>
+      <circle cx="40" cy="75" r="2" fill="#B87333" opacity="0.6"/>
+      <circle cx="10" cy="58" r="2" fill="#B87333" opacity="0.6"/>
+      <circle cx="10" cy="22" r="2" fill="#B87333" opacity="0.6"/>
+    </svg>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; letter-spacing:8px; color:rgba(245,242,238,0.3); text-transform:uppercase; margin-top:32px;">Destra Lab</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13px; color:rgba(184,115,51,0.5); margin-top:8px; letter-spacing:3px;">Parfums Exclusifs</div>
+    <div style="width:40px; height:1px; background:rgba(184,115,51,0.3); margin:32px auto;"></div>
+    <div style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.15);">Brand Book — Versão 1.0 — 2026</div>
+    <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.1); margin-top:8px;">Documento Confidencial</div>
+  </div>
+</div>
+
+</body>
+</html>

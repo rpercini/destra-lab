@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Destra Lab — Opções de Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F4; --cream-dark: #F0EDE7; --cream-deep: #E5E0D8;
+  --charcoal: #1C1917; --charcoal-60: #4A4744; --charcoal-30: #8A8784;
+  --copper: #A0622A; --copper-light: #C47D45; --copper-pale: #EDD9C4;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size: 16px; }
+body { background: var(--cream); font-family: 'Montserrat', sans-serif; color: var(--charcoal); }
+
+header {
+  padding: 60px 60px 0;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+header h1 {
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 8px;
+}
+header p {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+.grid {
+  max-width: 1320px;
+  margin: 60px auto 0;
+  padding: 0 60px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--cream-deep);
+}
+.card-label {
+  padding: 20px 28px;
+  background: var(--cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--cream-deep);
+}
+.card-label h2 {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+.card-label span {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--charcoal-30);
+}
+
+/* Two panels per card: dark left, light right */
+.card-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 280px;
+}
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  gap: 24px;
+}
+.panel--dark { background: #1C1917; }
+.panel--light { background: var(--cream); }
+
+/* Recommendation badge */
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+.badge--rec { background: #D4EDDA; color: #1A6B34; }
+.badge--alt { background: var(--cream-deep); color: var(--charcoal-60); }
+
+/* Descriptor */
+.card-desc {
+  padding: 20px 28px 28px;
+  background: var(--cream);
+  border-top: 1px solid var(--cream-deep);
+}
+.card-desc p {
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--charcoal-60);
+}
+.card-desc strong { font-weight: 700; color: var(--charcoal); }
+
+/* ────────────────────────────
+   LOGO SVG CONTAINERS
+──────────────────────────── */
+.logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Shared wordmark text style (NOT SVG text — real HTML) */
+.wm-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.wm-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 3px;
+  line-height: 1;
+}
+.wm-dark { color: #FAF8F4; }
+.wm-copper-d { color: #A0622A; }
+.wm-copper-l { color: #C47D45; }
+.wm-charcoal { color: #1C1917; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Destra Lab · Identidade Visual</h1>
+  <p>4 opções de logo</p>
+</header>
+
+<div class="grid">
+
+  <!-- ══════════════════════════
+       OPÇÃO 1 — Hexágono Molecular (Refinado)
+  ══════════════════════════ -->
+  <div class="card">
+    <div class="card-label">
+      <div>
+        <h2>Opção 01 — Hexágono Molecular</h2>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span class="badge badge--alt">Atual · Refinado</span>
+      </div>
+    </div>
+    <div class="card-panels">
+      <!-- Dark version -->
+      <div class="panel panel--dark">
+        <div class="logo-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer hex -->
+            <polygon points="36,4 66,21 66,51 36,68 6,51 6,21" stroke="#A0622A" stroke-width="1.5" fill="none"/>
+            <!-- Inner hex (thinner) -->
+            <polygon points="36,13 58,26 58,46 36,59 14,46 14,26" stroke="#A0622A" stroke-width="0.6" fill="none" opacity="0.35"/>
+            <!-- Vertex nodes -->
+            <circle cx="36" cy="4"  r="2.5" fill="#A0622A"/>
+            <circle cx="66" cy="21" r="2.5" fill="#A0622A"/>
+            <circle cx="66" cy="51" r="2.5" fill="#A0622A"/>
+            <circle cx="36" cy="68" r="2.5" fill="#A0622A"/>
+            <circle cx="6"  cy="51" r="2.5" fill="#A0622A"/>
+            <circle cx="6"  cy="21" r="2.5" fill="#A0622A"/>
+            <!-- D glyph — drawn as paths, no <text> -->
+            <!-- Vertical stem -->
+            <rect x="24" y="20" width="5" height="32" fill="#FAF8F4"/>
+            <!-- Arch (D shape) -->
+            <path d="M29 20 Q50 20 50 36 Q50 52 29 52" stroke="#FAF8F4" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <!-- Copper baseline accent -->
+            <line x1="24" y1="54" x2="50" y2="54" stroke="#A0622A" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+          <div>
+            <div class="wm-name wm-dark" style="font-size:14px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-l" style="font-size:9px;margin-top:5px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+      <!-- Light version -->
+      <div class="panel panel--light">
+        <div class="logo-wrap">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="36,4 66,21 66,51 36,68 6,51 6,21" stroke="#A0622A" stroke-width="1.5" fill="none"/>
+            <polygon points="36,13 58,26 58,46 36,59 14,46 14,26" stroke="#A0622A" stroke-width="0.6" fill="none" opacity="0.35"/>
+            <circle cx="36" cy="4"  r="2.5" fill="#A0622A"/>
+            <circle cx="66" cy="21" r="2.5" fill="#A0622A"/>
+            <circle cx="66" cy="51" r="2.5" fill="#A0622A"/>
+            <circle cx="36" cy="68" r="2.5" fill="#A0622A"/>
+            <circle cx="6"  cy="51" r="2.5" fill="#A0622A"/>
+            <circle cx="6"  cy="21" r="2.5" fill="#A0622A"/>
+            <rect x="24" y="20" width="5" height="32" fill="#1C1917"/>
+            <path d="M29 20 Q50 20 50 36 Q50 52 29 52" stroke="#1C1917" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <line x1="24" y1="54" x2="50" y2="54" stroke="#A0622A" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+          <div>
+            <div class="wm-name wm-charcoal" style="font-size:14px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-d" style="font-size:9px;margin-top:5px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-desc">
+      <p><strong>Conceito:</strong> Estrutura molecular hexagonal com nós metálicos + D desenhado como path (não texto — não quebra sem fonte). Remete a laboratório, ciência e precisão. <strong>Recomendado para embalagens e selos.</strong></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       OPÇÃO 2 — Wordmark Puro (Tipográfico)
+  ══════════════════════════ -->
+  <div class="card">
+    <div class="card-label">
+      <div>
+        <h2>Opção 02 — Wordmark Tipográfico</h2>
+      </div>
+      <div>
+        <span class="badge badge--rec">Recomendado — Digital</span>
+      </div>
+    </div>
+    <div class="card-panels">
+      <div class="panel panel--dark">
+        <div class="logo-wrap">
+          <!-- SVG wordmark usando paths geométricas para simular tipografia bold -->
+          <svg width="200" height="72" viewBox="0 0 200 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- DESTRA palavra — retângulo + linha decorativa -->
+            <!-- Copper top rule -->
+            <rect x="0" y="0" width="200" height="2" fill="#A0622A"/>
+            <!-- "DESTRA" simulado com letras geométricas simplificadas -->
+            <!-- D -->
+            <rect x="0" y="10" width="5" height="28" fill="#FAF8F4"/>
+            <path d="M5 10 Q22 10 22 24 Q22 38 5 38" stroke="#FAF8F4" stroke-width="5" fill="none"/>
+            <!-- E -->
+            <rect x="28" y="10" width="5" height="28" fill="#FAF8F4"/>
+            <rect x="28" y="10" width="16" height="4" fill="#FAF8F4"/>
+            <rect x="28" y="22" width="12" height="4" fill="#FAF8F4"/>
+            <rect x="28" y="34" width="16" height="4" fill="#FAF8F4"/>
+            <!-- S -->
+            <path d="M52 14 Q52 10 60 10 Q68 10 68 17 Q68 24 52 24 Q44 24 44 31 Q44 38 52 38 Q60 38 60 34" stroke="#FAF8F4" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- T -->
+            <rect x="74" y="10" width="20" height="4" fill="#FAF8F4"/>
+            <rect x="82" y="14" width="4" height="24" fill="#FAF8F4"/>
+            <!-- R -->
+            <rect x="100" y="10" width="5" height="28" fill="#FAF8F4"/>
+            <path d="M105 10 Q120 10 120 19 Q120 28 105 28" stroke="#FAF8F4" stroke-width="5" fill="none"/>
+            <line x1="108" y1="28" x2="121" y2="38" stroke="#FAF8F4" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- A -->
+            <path d="M128 38 L138 10 L148 38" stroke="#FAF8F4" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="131" y1="28" x2="145" y2="28" stroke="#FAF8F4" stroke-width="3.5"/>
+            <!-- Copper mid rule -->
+            <rect x="0" y="44" width="200" height="1" fill="#A0622A" opacity="0.6"/>
+            <!-- LAB em menor, cobre -->
+            <!-- L -->
+            <rect x="0" y="50" width="3.5" height="18" fill="#A0622A"/>
+            <rect x="0" y="64" width="12" height="3.5" fill="#A0622A"/>
+            <!-- A -->
+            <path d="M18 68 L24 50 L30 68" stroke="#A0622A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="20.5" y1="62" x2="27.5" y2="62" stroke="#A0622A" stroke-width="2.5"/>
+            <!-- B -->
+            <rect x="36" y="50" width="3.5" height="18" fill="#A0622A"/>
+            <path d="M39.5 50 Q49 50 49 55.5 Q49 59 39.5 59" stroke="#A0622A" stroke-width="3.5" fill="none"/>
+            <path d="M39.5 59 Q51 59 51 64 Q51 68 39.5 68" stroke="#A0622A" stroke-width="3.5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <div class="panel panel--light">
+        <div class="logo-wrap">
+          <svg width="200" height="72" viewBox="0 0 200 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="200" height="2" fill="#A0622A"/>
+            <rect x="0" y="10" width="5" height="28" fill="#1C1917"/>
+            <path d="M5 10 Q22 10 22 24 Q22 38 5 38" stroke="#1C1917" stroke-width="5" fill="none"/>
+            <rect x="28" y="10" width="5" height="28" fill="#1C1917"/>
+            <rect x="28" y="10" width="16" height="4" fill="#1C1917"/>
+            <rect x="28" y="22" width="12" height="4" fill="#1C1917"/>
+            <rect x="28" y="34" width="16" height="4" fill="#1C1917"/>
+            <path d="M52 14 Q52 10 60 10 Q68 10 68 17 Q68 24 52 24 Q44 24 44 31 Q44 38 52 38 Q60 38 60 34" stroke="#1C1917" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <rect x="74" y="10" width="20" height="4" fill="#1C1917"/>
+            <rect x="82" y="14" width="4" height="24" fill="#1C1917"/>
+            <rect x="100" y="10" width="5" height="28" fill="#1C1917"/>
+            <path d="M105 10 Q120 10 120 19 Q120 28 105 28" stroke="#1C1917" stroke-width="5" fill="none"/>
+            <line x1="108" y1="28" x2="121" y2="38" stroke="#1C1917" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M128 38 L138 10 L148 38" stroke="#1C1917" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="131" y1="28" x2="145" y2="28" stroke="#1C1917" stroke-width="3.5"/>
+            <rect x="0" y="44" width="200" height="1" fill="#A0622A" opacity="0.6"/>
+            <rect x="0" y="50" width="3.5" height="18" fill="#A0622A"/>
+            <rect x="0" y="64" width="12" height="3.5" fill="#A0622A"/>
+            <path d="M18 68 L24 50 L30 68" stroke="#A0622A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="20.5" y1="62" x2="27.5" y2="62" stroke="#A0622A" stroke-width="2.5"/>
+            <rect x="36" y="50" width="3.5" height="18" fill="#A0622A"/>
+            <path d="M39.5 50 Q49 50 49 55.5 Q49 59 39.5 59" stroke="#A0622A" stroke-width="3.5" fill="none"/>
+            <path d="M39.5 59 Q51 59 51 64 Q51 68 39.5 68" stroke="#A0622A" stroke-width="3.5" fill="none"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="card-desc">
+      <p><strong>Conceito:</strong> Wordmark puro. "DESTRA" em grande, "LAB" em cobre menor separados por regra horizontal. Toda a identidade na tipografia. <strong>Excelente para digital, redes sociais e embalagem impressa.</strong></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       OPÇÃO 3 — Monograma DL Geométrico
+  ══════════════════════════ -->
+  <div class="card">
+    <div class="card-label">
+      <div>
+        <h2>Opção 03 — Monograma DL</h2>
+      </div>
+      <div>
+        <span class="badge badge--rec">Recomendado — Embalagem</span>
+      </div>
+    </div>
+    <div class="card-panels">
+      <div class="panel panel--dark">
+        <div class="logo-wrap">
+          <svg width="120" height="90" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- D: bold vertical + arch, left side -->
+            <rect x="10" y="8" width="7" height="46" fill="#FAF8F4"/>
+            <path d="M17 8 Q44 8 44 31 Q44 54 17 54" stroke="#FAF8F4" stroke-width="7" fill="none" stroke-linecap="butt"/>
+            <!-- L: bottom-right, copper color — shares the bottom baseline with D -->
+            <rect x="54" y="8" width="6" height="46" fill="#A0622A"/>
+            <rect x="54" y="48" width="28" height="6" fill="#A0622A"/>
+            <!-- Shared baseline rule, full width -->
+            <rect x="10" y="58" width="72" height="2" fill="#A0622A" opacity="0.4"/>
+            <!-- Wordmark below -->
+          </svg>
+          <div>
+            <div class="wm-name wm-dark" style="font-size:13px; letter-spacing:8px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-l" style="font-size:8px; margin-top:4px; letter-spacing:4px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel--light">
+        <div class="logo-wrap">
+          <svg width="120" height="90" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="8" width="7" height="46" fill="#1C1917"/>
+            <path d="M17 8 Q44 8 44 31 Q44 54 17 54" stroke="#1C1917" stroke-width="7" fill="none" stroke-linecap="butt"/>
+            <rect x="54" y="8" width="6" height="46" fill="#A0622A"/>
+            <rect x="54" y="48" width="28" height="6" fill="#A0622A"/>
+            <rect x="10" y="58" width="72" height="2" fill="#A0622A" opacity="0.4"/>
+          </svg>
+          <div>
+            <div class="wm-name wm-charcoal" style="font-size:13px; letter-spacing:8px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-d" style="font-size:8px; margin-top:4px; letter-spacing:4px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-desc">
+      <p><strong>Conceito:</strong> D em branco/carvão + L em cobre lado a lado, unidos pela linha de base. Jogo de dois pesos e duas cores sem parecer carregado. <strong>Forte para tampas de frasco, selos em relevo, bordado.</strong></p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════
+       OPÇÃO 4 — Marca Abstrata (Flask/Lab)
+  ══════════════════════════ -->
+  <div class="card">
+    <div class="card-label">
+      <div>
+        <h2>Opção 04 — Marca Abstrata Lab</h2>
+      </div>
+      <div>
+        <span class="badge badge--alt">Conceitual · Moderno</span>
+      </div>
+    </div>
+    <div class="card-panels">
+      <div class="panel panel--dark">
+        <div class="logo-wrap">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Flask/beaker shape that forms a D -->
+            <!-- Outer circle -->
+            <circle cx="50" cy="50" r="44" stroke="#A0622A" stroke-width="1.5" fill="none"/>
+            <!-- D shape as negative cut -->
+            <!-- Vertical bar left -->
+            <rect x="26" y="24" width="8" height="52" fill="#FAF8F4" rx="1"/>
+            <!-- Arch of D -->
+            <path d="M34 24 Q72 24 72 50 Q72 76 34 76" stroke="#FAF8F4" stroke-width="8" fill="none" stroke-linecap="square"/>
+            <!-- Copper ring accent inside -->
+            <circle cx="50" cy="50" r="36" stroke="#A0622A" stroke-width="0.5" fill="none" opacity="0.3" stroke-dasharray="4 4"/>
+            <!-- Copper dot accent -->
+            <circle cx="50" cy="6"  r="3" fill="#A0622A"/>
+            <circle cx="50" cy="94" r="3" fill="#A0622A"/>
+          </svg>
+          <div>
+            <div class="wm-name wm-dark" style="font-size:13px; letter-spacing:7px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-l" style="font-size:9px; margin-top:5px; letter-spacing:3px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel--light">
+        <div class="logo-wrap">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="#A0622A" stroke-width="1.5" fill="none"/>
+            <rect x="26" y="24" width="8" height="52" fill="#1C1917" rx="1"/>
+            <path d="M34 24 Q72 24 72 50 Q72 76 34 76" stroke="#1C1917" stroke-width="8" fill="none" stroke-linecap="square"/>
+            <circle cx="50" cy="50" r="36" stroke="#A0622A" stroke-width="0.5" fill="none" opacity="0.3" stroke-dasharray="4 4"/>
+            <circle cx="50" cy="6"  r="3" fill="#A0622A"/>
+            <circle cx="50" cy="94" r="3" fill="#A0622A"/>
+          </svg>
+          <div>
+            <div class="wm-name wm-charcoal" style="font-size:13px; letter-spacing:7px;">DESTRA LAB</div>
+            <div class="wm-sub wm-copper-d" style="font-size:9px; margin-top:5px; letter-spacing:3px;">PARFUMS EXCLUSIFS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-desc">
+      <p><strong>Conceito:</strong> D dentro de um círculo perfeito com pontilhados internos (referência a instrumentos de laboratório/medição). Minimalismo máximo. <strong>Ideal para avatar, ícone de app e bordado em uniforme.</strong></p>
+    </div>
+  </div>
+
+</div><!-- /grid -->
+
+<!-- RECOMMENDATION FOOTER -->
+<div style="max-width:1320px;margin:0 auto;padding:0 60px 80px;">
+  <div style="background:var(--charcoal);border-radius:8px;padding:48px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#A0622A;margin-bottom:16px;">Recomendação do Design Chief</p>
+      <p style="font-weight:900;font-size:24px;letter-spacing:-0.5px;color:#FAF8F4;margin-bottom:20px;text-transform:uppercase;line-height:1.2;">Sistema combinado:<br>Opção 03 + Opção 04</p>
+      <p style="font-size:14px;line-height:1.8;color:rgba(250,248,244,0.55);">Use a <strong style="color:#C47D45;">Opção 03 (Monograma DL)</strong> como marca principal nos produtos físicos — frasco, caixa, lacre. Use a <strong style="color:#C47D45;">Opção 04 (Círculo)</strong> como ícone digital — avatar, favicon, perfil. A Opção 02 (Wordmark) serve como lockup horizontal para cabeçalho de site e emailmarketing.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div style="padding:20px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(160,98,42,0.25);border-radius:4px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#A0622A;margin-bottom:6px;">Produto físico</p>
+        <p style="font-size:14px;color:rgba(250,248,244,0.7);">Opção 03 — Monograma DL em relevo/hot stamping na caixa e frasco</p>
+      </div>
+      <div style="padding:20px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(160,98,42,0.25);border-radius:4px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#A0622A;margin-bottom:6px;">Digital / Redes sociais</p>
+        <p style="font-size:14px;color:rgba(250,248,244,0.7);">Opção 04 — Círculo como avatar + Opção 02 como header do site</p>
+      </div>
+      <div style="padding:20px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(160,98,42,0.25);border-radius:4px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#A0622A;margin-bottom:6px;">Próximo passo</p>
+        <p style="font-size:14px;color:rgba(250,248,244,0.7);">Escolha 1 opção → Designer vetoriza em Illustrator/Figma → Arquivo final em AI + SVG + PNG</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
