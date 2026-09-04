@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200">
+
+  <!-- Código de barras estilizado (mesma posição relativa: acima do nome) -->
+  <g transform="translate(250, 30)">
+    <rect x="-30" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="-26" y="0" width="2" height="8" fill="#1A1A1A"/>
+    <rect x="-21" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="-17" y="0" width="3" height="8" fill="#1A1A1A"/>
+    <rect x="-11" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="-7" y="0" width="2" height="8" fill="#1A1A1A"/>
+    <rect x="-2" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="2" y="0" width="2" height="8" fill="#1A1A1A"/>
+    <rect x="7" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="11" y="0" width="3" height="8" fill="#1A1A1A"/>
+    <rect x="17" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="21" y="0" width="2" height="8" fill="#1A1A1A"/>
+    <rect x="26" y="0" width="1" height="8" fill="#1A1A1A"/>
+    <rect x="29" y="0" width="2" height="8" fill="#1A1A1A"/>
+  </g>
+
+  <!-- DESTRA (bold 700, font-size 72, letter-spacing 4) -->
+  <text x="250" y="100" 
+        font-family="Helvetica Neue, Arial, sans-serif" 
+        font-size="72" 
+        font-weight="700"
+        fill="#1A1A1A" 
+        text-anchor="middle" 
+        letter-spacing="4">DESTRA</text>
+  
+  <!-- LAB. (light 300, font-size 72, letter-spacing 14) -->
+  <text x="250" y="185" 
+        font-family="Helvetica Neue, Arial, sans-serif" 
+        font-size="72" 
+        font-weight="300"
+        fill="#1A1A1A" 
+        text-anchor="middle" 
+        letter-spacing="14">LAB.</text>
+
+</svg>

@@ -75,6 +75,8 @@ Elementos que provavelmente saem do rótulo (ficam na luva): descritivo e fio ce
 
 ## 5. Lockup DESTRA LAB. · razão B **[C]**, verificado na arte ✔
 
+**Pesos [C]** (logo original `ref/destra-lab-logo-pura.svg`, recebida em 2026-09-04): **DESTRA Bold 700 · LAB. Light 300**, mesmo corpo. As artes v4/v3 tinham LAB. em Bold — estavam descaracterizadas; corrigido no gerador (vertical e horizontal). A logo original usa ornamento de 14 barras (1 2 1 3 1 2 1 2 1 3 1 2 1 2), LAB. com tracking ≈ 0,19 × corpo e ornamento menor; o handoff define a razão B (sequência de 24 barras, LAB. = 0,70 Wd, ornamento 0,40 Wd) e prevalece por ser mais recente.
+
 | parâmetro | regra | luva v4 (21,01 pt) | rótulo v3 (12,22 pt) |
 |---|---|---|---|
 | Wd (largura DESTRA) | — | 32,58 mm | 18,96 mm |

@@ -25,6 +25,7 @@ ROTULO = dict(w=60, h=45, raio=3, seguranca=3)  # [C] 60x45 · [R] orientação 
 
 CAP = 0.742                     # caixa alta = 0,742 x corpo
 TRACK_DESTRA = 0.028            # x corpo
+PESO_DESTRA, PESO_LAB = "LF-700", "LF-300"  # [C] logo: DESTRA Bold 700, LAB. Light 300 (ref/destra-lab-logo-pura.svg)
 LAB_RATIO = 0.70                # largura LAB. = 0,70 Wd
 ORN_W = 0.40                    # ornamento largura = 0,40 Wd
 ORN_H = 0.42                    # ornamento altura = 0,42 caixa alta
@@ -125,18 +126,18 @@ def ornamento(p, cx, y_bottom, width, height):
 
 def lockup_vertical(p, cx, baseline, size):
     """DESTRA / LAB. empilhados + ornamento. baseline = linha de base de DESTRA. Retorna dict de métricas."""
-    f = "LF-700"; cap = cap_mm(size)
+    f, fl = PESO_DESTRA, PESO_LAB; cap = cap_mm(size)
     wd = tracked_w("DESTRA", f, size, TRACK_DESTRA)
     p.text(cx, baseline, "DESTRA", f, size, TRACK_DESTRA, "center")
-    # LAB.: largura 0,70 Wd; gap = (0,70 Wd − natural) / 2, ponto colado ao B
+    # LAB. em Light: largura 0,70 Wd; gap = (0,70 Wd − natural) / 2, ponto colado ao B
     parts = ["L", "A", "B."]
-    nat = sum(sw(t, f, size) for t in parts)
+    nat = sum(sw(t, fl, size) for t in parts)
     target = LAB_RATIO * wd
     gap = (target - nat) / 2
     x = cx - target / 2
     y2 = baseline - ENTRELINHA * cap
     for t in parts:
-        p.text(x, y2, t, f, size); x += sw(t, f, size) + gap
+        p.text(x, y2, t, fl, size); x += sw(t, fl, size) + gap
     # ornamento
     orn_h = ORN_H * cap
     orn_bottom = baseline + cap + ORN_GAP * cap
@@ -145,8 +146,12 @@ def lockup_vertical(p, cx, baseline, size):
 
 def lockup_horizontal(p, cx, baseline, size):
     """DESTRA LAB. em uma linha + ornamento acima. [D] parâmetros observados na v4; não formalizados no handoff."""
-    f = "LF-700"; cap = cap_mm(size)
-    w = p.text(cx, baseline, "DESTRA LAB.", f, size, TRACK_DESTRA, "center")
+    f, fl = PESO_DESTRA, PESO_LAB; cap = cap_mm(size)
+    sp = sw(" ", f, size) + 2 * TRACK_DESTRA * size / MM
+    w1, w2 = tracked_w("DESTRA", f, size, TRACK_DESTRA), tracked_w("LAB.", fl, size, TRACK_DESTRA)
+    w = w1 + sp + w2
+    p.text(cx - w / 2, baseline, "DESTRA", f, size, TRACK_DESTRA)
+    p.text(cx - w / 2 + w1 + sp, baseline, "LAB.", fl, size, TRACK_DESTRA)
     orn_h = ORN_H * cap
     ornamento(p, cx, baseline + cap + ORN_GAP * cap, ORN_W * w, orn_h)
     return dict(w=w, cap=cap, top=baseline + cap + ORN_GAP * cap + orn_h)
