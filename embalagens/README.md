@@ -51,7 +51,7 @@ Na v4 a frente contém **um só lockup vertical** (ornamento, DESTRA, LAB.). O h
 
 - **[C]** Nova medida: **60 × 45 mm**. Substitui integralmente 65 × 80 mm.
 - **[C]** Faca com raio 3 mm · sangria 3 mm · margem de segurança 3 mm.
-- **[P]** Orientação (60 largo × 45 alto ou 45 largo × 60 alto) — deve respeitar o layout das imagens e a aplicação no frasco.
+- **[C]** Orientação: **45 largo × 60 alto** (retrato), confirmada em 2026-09-04. Sem a linha FÓRMULA Nº 0X no rótulo (pedido do mesmo dia).
 - **[D]** Composição v3 (65 × 80, retrato, tudo centralizado): ornamento · DESTRA / LAB. (12,2 pt Bold) · EXPONENCIAL (18,25 pt SemiBold, **47,6 mm**) · `FORMULA Nº 02` (6 pt Light) · descritivo (5 pt Light) · fio 18 × 0,5 mm · `PARFUM` (7 pt Medium) · `100 ML · 3.4 FL.OZ` (6,5 pt Light) · fio cinza · legais 2 linhas (4,2 pt Light).
 
 ### Impacto da redução para 60 × 45 **[R]**
@@ -152,7 +152,7 @@ Verificações automáticas: caixa alta da fonte = 742/1000 (bate com 0,742); EX
 |---|---|---|
 | Desenvolvimento da luva | 10 · 40 · 110 · 40 · 110 × 155, trim 310 × 155, página 316 × 161, **sem folga** | [R] — validar com a faca da gráfica |
 | Posições verticais da luva | posições da v4 escaladas por 155/125 (1,24); corpos, barra 60 × 2 e altura das barras do gráfico (2,6 mm) mantidos; passo das linhas do gráfico escalado (3,4 → 4,2 mm) | [R] |
-| Rótulo | 60 largo × 45 alto; nome 44 mm; lockup 11,3 pt; pilha: ornamento + lockup, nome, FÓRMULA, PARFUM · 100 ML · 3.4 FL.OZ, fio cinza, legais 2 linhas. **Descritivo e fio central saíram do rótulo** (permanecem na luva) | [R] — altera a v3 |
+| Rótulo | **45 largo × 60 alto** [C]; nome 33 mm (48 × 45/65); lockup 8,5 pt; pilha da v3 sem FÓRMULA: ornamento + lockup, nome, descritivo, fio 12,5 mm, PARFUM, 100 ML · 3.4 FL.OZ, fio cinza, INDÚSTRIA BRASILEIRA; bloco centrado na altura; textos pequenos com piso de 4 pt | [R] |
 | Grafia | `FÓRMULA Nº 0X` com acento, conforme o texto do handoff (v4/v3 usavam FORMULA) | [P] — trocar `FORMULA_LABEL` se preferir |
 | Modo de uso e rodapé `FEITO POR BRASILEIROS` | os da luva v4 do EXPONENCIAL aplicados aos 4 SKUs | [R] |
 | Curva olfativa | dados de `skus.json` como estão (EXPONENCIAL com descritores, demais com matérias-primas); MITO com 8 barras, assimetria aceita (opção A) | [P] pendência 1 |

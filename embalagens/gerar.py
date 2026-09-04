@@ -21,7 +21,7 @@ MM = 72 / 25.4  # pt por mm
 CAIXA = (155, 110, 40)          # [C] caixa fechada
 SANGRIA = 3
 LUVA = dict(aba=10, latA=40, frente=110, latB=40, verso=110, altura=155)  # [R] proposta p/ 155x110x40
-ROTULO = dict(w=60, h=45, raio=3, seguranca=3)  # [C] 60x45 · [R] orientação 60 largo x 45 alto
+ROTULO = dict(w=45, h=60, raio=3, seguranca=3)  # [C] 45 largo x 60 alto (confirmado 2026-09-04)
 
 CAP = 0.742                     # caixa alta = 0,742 x corpo
 TRACK_DESTRA = 0.028            # x corpo
@@ -34,8 +34,9 @@ ENTRELINHA = 1.62               # x caixa alta
 ORN_SEQ = [2,1,1,2,1,3,1,1,2,1,1,3,2,1,1,2,1,1,3,1,2,1,1,2]  # vãos de 1
 
 NOME_LARGURA_LUVA = 86          # [C] referência do sistema
-NOME_LARGURA_ROTULO = 44        # [R] 48 x (60/65) — proporcional à nova largura do rótulo
+NOME_LARGURA_ROTULO = 33        # [R] 48 x (45/65) — proporcional à nova largura do rótulo
 NOME_BASE = "EXPONENCIAL"       # define o corpo; os demais herdam
+DESC_ROTULO = dict(size=4.2, track=0.22, max_w=37.0)  # descritivo no rótulo; track é reduzido p/ o SKU mais longo caber (calculado em main)
 
 BARRA = (60, 2)                 # frente da luva
 EIXO_MARCOS = ["0", "15min", "30min", "1h", "2h", "4h", "8h", "12h+"]
@@ -334,27 +335,40 @@ def rotulo_pagesize():
     return ROTULO["w"] + 2 * SANGRIA, ROTULO["h"] + 2 * SANGRIA
 
 def rotulo(c, sku, guias):
+    """rótulo 45 x 60 (retrato). Pilha da v3 sem FÓRMULA e sem razão social / lote; bloco centrado na altura."""
     R = ROTULO; S = SANGRIA; W, H = R["w"], R["h"]
     PW, PH = rotulo_pagesize()
     p = Pen(c)
-    cx = PW / 2; safe_top = S + H - R["seguranca"]; safe_bot = S + R["seguranca"]
-    size = 11.3; cap = cap_mm(size)
-    base = safe_top - 0.3 - ORN_H * cap - ORN_GAP * cap - cap
-    lk = lockup_vertical(p, cx, base, size)
+    cx = PW / 2
+    lk_size = 8.5; cap = cap_mm(lk_size)
+    nome_cap = cap_mm(nome_size_rotulo)
+    # alturas relativas (mm, do topo do ornamento para baixo)
+    y_destra = ORN_H * cap + ORN_GAP * cap + cap
+    y_lab = y_destra + ENTRELINHA * cap
+    y_nome = y_lab + 7.7 + nome_cap
+    y_desc = y_nome + 6.5
+    y_rule = y_desc + 4.5
+    y_parfum = y_rule + 5.5
+    y_vol = y_parfum + 4.5
+    y_rule2 = y_vol + 4.0
+    y_legal = y_rule2 + 3.8
+    block_h = y_legal
+    top = S + H - (H - block_h) / 2            # topo do bloco (página, y para cima)
+    Y = lambda d: top - d
+    lockup_vertical(p, cx, Y(y_destra), lk_size)
     p.k(1.0)
-    y_nome = lk["lab_baseline"] - 3.2 - cap_mm(nome_size_rotulo)
-    p.text(cx, y_nome, sku["nome"], "LF-600", nome_size_rotulo, 0, "center")
-    y_f = y_nome - 4.6
-    p.text(cx, y_f, f"{FORMULA_LABEL} {sku['numero']}", "LF-300", 5.5, 0.35, "center")
-    y_v = y_f - 4.8
-    p.text(cx, y_v, VOLUME, "LF-300", 5.5, 0.15, "center")  # mais estreita que o nome (44 mm)
-    p.k(0.18); p.line(S + 4, 13.6, S + W - 4, 13.6, 0.4); p.k(1.0)
-    p.text(cx, 9.0, LEGAIS_ROTULO[0], "LF-300", 4.0, 0.02, "center")
+    p.text(cx, Y(y_nome), sku["nome"], "LF-600", nome_size_rotulo, 0, "center")
+    p.text(cx, Y(y_desc), sku["descritivo"].upper(), "LF-300", DESC_ROTULO["size"], DESC_ROTULO["track"], "center")
+    p.line(cx - 6.25, Y(y_rule), cx + 6.25, Y(y_rule), 0.5)
+    p.text(cx, Y(y_parfum), "PARFUM", "LF-500", 5.5, 0.30, "center")
+    p.text(cx, Y(y_vol), "100 ML  ·  3.4 FL.OZ", "LF-300", 5.0, 0.20, "center")
+    p.k(0.18); p.line(S + 4, Y(y_rule2), S + W - 4, Y(y_rule2), 0.4); p.k(1.0)
+    p.text(cx, Y(y_legal), LEGAIS_ROTULO[0], "LF-300", 4.0, 0.02, "center")
     if guias:
         p.magenta(); c.setLineWidth(0.4)
         c.roundRect(S * MM, S * MM, W * MM, H * MM, R["raio"] * MM, fill=0, stroke=1)
         c.setDash([1.5, 1.5]); c.roundRect((S + 3) * MM, (S + 3) * MM, (W - 6) * MM, (H - 6) * MM, 1.5 * MM, fill=0, stroke=1); c.setDash([])
-        p.text(PW / 2, PH - 2.2, f"FACA {W} x {H} mm · raio {R['raio']} mm · sangria {S} · tracejado = segurança 3 · DRAFT", "LF-400", 4.2, 0, "center")
+        p.text(PW / 2, PH - 2.2, f"FACA {W} x {H} mm · raio {R['raio']} · sangria {S} · seg. 3 · DRAFT", "LF-400", 3.8, 0, "center")
         p.k(1.0)
     c.showPage()
 
@@ -365,6 +379,13 @@ def main():
     nome_size_rotulo = fit_nome(NOME_LARGURA_ROTULO)
     print(f"corpo do nome: luva {nome_size_luva:.2f} pt ({NOME_LARGURA_LUVA} mm) · rótulo {nome_size_rotulo:.2f} pt ({NOME_LARGURA_ROTULO} mm)")
     data = json.load(open(os.path.join(HERE, "skus.json"), encoding="utf-8"))
+    # tracking do descritivo no rótulo: o maior valor (<= 0,22 em) em que o SKU mais longo cabe em max_w
+    ds = DESC_ROTULO["size"]
+    for sku in data["skus"]:
+        t = sku["descritivo"].upper()
+        fit = (DESC_ROTULO["max_w"] - sw(t, "LF-300", ds)) / ((len(t) - 1) * ds / MM)
+        DESC_ROTULO["track"] = min(DESC_ROTULO["track"], round(fit, 3))
+    print(f"descritivo do rótulo: {ds} pt, tracking {DESC_ROTULO['track']} em (limite {DESC_ROTULO['max_w']} mm)")
     os.makedirs(OUT, exist_ok=True)
     for sku in data["skus"]:
         base12 = f"78900000000{sku['numero'][-1]}"
