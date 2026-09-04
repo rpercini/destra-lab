@@ -51,11 +51,10 @@ RODAPE = "FEITO POR BRASILEIROS"
 LEGAIS_LUVA = {  # PLACEHOLDERS — dados legais pendentes por SKU
     "titulo": "INGREDIENTES / INGREDIENTS",
     "inci": "ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), [LISTA INCI COMPLETA A INSERIR]",
-    "fabricante": "FABRICANTE [RAZÃO SOCIAL] · CNPJ [00.000.000/0001-00] · [ENDEREÇO COMPLETO] · INDÚSTRIA BRASILEIRA",
+    "fabricante": "INDÚSTRIA BRASILEIRA",  # razão social / CNPJ / endereço removidos a pedido (2026-09-04)
     "sac": "SAC [0000 000 0000] · Produto notificado na ANVISA sob nº [00000000000] · Uso externo. Manter em local fresco, ao abrigo da luz.",
-    "lote": "LOTE / VAL.",
 }
-LEGAIS_ROTULO = ["[RAZÃO SOCIAL] · CNPJ [00.000.000/0001-00]", "INDÚSTRIA BRASILEIRA  ·  LOTE / VAL. [__________]"]
+LEGAIS_ROTULO = ["INDÚSTRIA BRASILEIRA"]  # razão social / CNPJ e lote removidos a pedido (2026-09-04)
 
 # ----------------------------------------------------------------------------
 # fontes
@@ -275,21 +274,18 @@ def luva(c, sku, guias):
     ean_x = H - 8 - ean_w
     ean13(p, ean_x, (w - ean_h) / 2, sku["ean_placeholder"], EAN_MAG)
     fs, fL = 4.4, "LF-300"
-    PITCH_LINHA, PITCH_PARA, LOTE_H, LOTE_GAP = 3.2, 4.4, 4.6, 3.0
+    PITCH_LINHA, PITCH_PARA = 3.2, 4.4
     maxlen = ean_x - 6 - 6
     cols = [(LEGAIS_LUVA["titulo"], "LF-500", 4.6, 0.30, PITCH_PARA)]
     for key in ("inci", "fabricante", "sac"):
         lines = p.wrap(LEGAIS_LUVA[key], fL, fs, 0, maxlen)
         for j, ln in enumerate(lines):
             cols.append((ln, fL, fs, 0, PITCH_PARA if j == len(lines) - 1 else PITCH_LINHA))
-    text_w = sum(cn[4] for cn in cols)               # da baseline da 1ª coluna à baseline seguinte à última
-    block_w = cap_mm(4.6) + text_w + LOTE_GAP + LOTE_H  # caixa alta do título à direita da caixa de lote
+    text_w = sum(cn[4] for cn in cols[:-1])          # da baseline da 1ª coluna à baseline da última
+    block_w = cap_mm(4.6) + text_w                   # caixa alta do título à baseline da última coluna
     y = (w + block_w) / 2 - cap_mm(4.6)              # baseline da 1ª coluna (esquerda do painel = y maior)
     for t, f, s, tr, pitch in cols:
         p.k(1.0); p.text(6, y, t, f, s, tr); y -= pitch
-    ly = y + PITCH_PARA - LOTE_GAP - LOTE_H
-    p.k(0.25); c.setLineWidth(0.4); c.rect(22 * MM, ly * MM, 32 * MM, LOTE_H * MM, fill=0, stroke=1)
-    p.k(1.0); p.text(6, ly + 1.3, LEGAIS_LUVA["lote"], "LF-500", 4.6, 0.30)
     c.restoreState()
 
     # ---- VERSO (normal)
@@ -348,8 +344,7 @@ def rotulo(c, sku, guias):
     y_v = y_f - 4.8
     p.text(cx, y_v, VOLUME, "LF-300", 5.5, 0.15, "center")  # mais estreita que o nome (44 mm)
     p.k(0.18); p.line(S + 4, 13.6, S + W - 4, 13.6, 0.4); p.k(1.0)
-    p.text(cx, 10.4, LEGAIS_ROTULO[0], "LF-300", 4.0, 0.02, "center")
-    p.text(cx, 7.4, LEGAIS_ROTULO[1], "LF-300", 4.0, 0.02, "center")
+    p.text(cx, 9.0, LEGAIS_ROTULO[0], "LF-300", 4.0, 0.02, "center")
     if guias:
         p.magenta(); c.setLineWidth(0.4)
         c.roundRect(S * MM, S * MM, W * MM, H * MM, R["raio"] * MM, fill=0, stroke=1)

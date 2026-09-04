@@ -156,3 +156,4 @@ Verificações automáticas: caixa alta da fonte = 742/1000 (bate com 0,742); EX
 | Curva olfativa | dados de `skus.json` como estão (EXPONENCIAL com descritores, demais com matérias-primas); MITO com 8 barras, assimetria aceita (opção A) | [P] pendência 1 |
 | EAN-13 | 100 % (37,29 × 25,93 mm) na lateral B de 40 mm; números placeholder `789000000000X` distintos por SKU, com dígito verificador válido; dígitos em Libre Franklin (norma pede OCR-B) | [P] |
 | Lockup horizontal (lateral A) | 13 pt Bold, tracking 0,028, ornamento 0,40 × largura da linha, fórmula 5,5 pt a 2 × caixa alta abaixo da base | [D] observado na v4 |
+| Razão social / CNPJ / endereço e campo LOTE / VAL. | **removidos** da luva (lateral B) e do rótulo a pedido; fica só `INDÚSTRIA BRASILEIRA`. Reintroduzir quando os dados legais forem definidos | [P] |
