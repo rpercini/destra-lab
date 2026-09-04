@@ -135,3 +135,24 @@ Ver `skus.json`. Numeração: 01 LIVE · **02 EXPONENCIAL** · 03 AMADA · 04 MI
 7. Parâmetros do lockup horizontal (lateral A).
 8. Grafia FÓRMULA / FORMULA; uso de "FEITO POR BRASILEIROS" nos demais SKUs; ampliação do EAN na lateral de 40 mm.
 9. Qual identidade prevalece entre o brand book do site e o sistema de embalagens.
+
+---
+
+## 12. Artes geradas (2026-09-04) — `gerar.py` → `out/`
+
+Gerador paramétrico em Python/ReportLab, fontes em `fonts/` (Libre Franklin, licença OFL). `python3 gerar.py` gera 8 PDFs (4 luvas, 4 rótulos), cada um com **página 1 com guias** (faca, dobras, anotações em magenta) e **página 2 limpa**. Previews em `out/preview/`. Todos os arquivos são **DRAFT**: dados legais e EAN são placeholders entre colchetes.
+
+Verificações automáticas: caixa alta da fonte = 742/1000 (bate com 0,742); EXPONENCIAL sem tracking mede 86,0 mm na luva e 44,0 mm no rótulo; DESTRA com tracking 0,028 reproduz a largura da v4 ao décimo de milímetro.
+
+### Decisões tomadas nesta geração (todas reversíveis por parâmetro no topo de `gerar.py`)
+
+| item | valor usado | marcação |
+|---|---|---|
+| Desenvolvimento da luva | 10 · 40 · 110 · 40 · 110 × 155, trim 310 × 155, página 316 × 161, **sem folga** | [R] — validar com a faca da gráfica |
+| Posições verticais da luva | posições da v4 escaladas por 155/125 (1,24); corpos, barra 60 × 2 e altura das barras do gráfico (2,6 mm) mantidos; passo das linhas do gráfico escalado (3,4 → 4,2 mm) | [R] |
+| Rótulo | 60 largo × 45 alto; nome 44 mm; lockup 11,3 pt; pilha: ornamento + lockup, nome, FÓRMULA, PARFUM · 100 ML · 3.4 FL.OZ, fio cinza, legais 2 linhas. **Descritivo e fio central saíram do rótulo** (permanecem na luva) | [R] — altera a v3 |
+| Grafia | `FÓRMULA Nº 0X` com acento, conforme o texto do handoff (v4/v3 usavam FORMULA) | [P] — trocar `FORMULA_LABEL` se preferir |
+| Modo de uso e rodapé `FEITO POR BRASILEIROS` | os da luva v4 do EXPONENCIAL aplicados aos 4 SKUs | [R] |
+| Curva olfativa | dados de `skus.json` como estão (EXPONENCIAL com descritores, demais com matérias-primas); MITO com 8 barras, assimetria aceita (opção A) | [P] pendência 1 |
+| EAN-13 | 100 % (37,29 × 25,93 mm) na lateral B de 40 mm; números placeholder `789000000000X` distintos por SKU, com dígito verificador válido; dígitos em Libre Franklin (norma pede OCR-B) | [P] |
+| Lockup horizontal (lateral A) | 13 pt Bold, tracking 0,028, ornamento 0,40 × largura da linha, fórmula 5,5 pt a 2 × caixa alta abaixo da base | [D] observado na v4 |
