@@ -1,0 +1,102 @@
+{
+  "_leia": "Dados por SKU do sistema de embalagens Destra Lab. Campo 'status' em cada bloco: confirmado | decisao_design | recomendacao | pendente. Eixo temporal em unidades parametricas: 0=0, 8=15min, 14=30min, 21=1h, 28=2h, 37=4h, 46=8h, 58=12h+.",
+  "eixo_temporal": {
+    "marcos": ["0", "15min", "30min", "1h", "2h", "4h", "8h", "12h+"],
+    "posicoes": [0, 8, 14, 21, 28, 37, 46, 58],
+    "status": "confirmado"
+  },
+  "reticulas_permitidas": [40, 70, 100],
+  "skus": [
+    {
+      "numero": "01",
+      "nome": "LIVE",
+      "descritivo": "Cítrico. Aromático. Luminoso.",
+      "frase": "Clareza que atravessa o dia sem se anunciar.",
+      "textos_status": "decisao_design (aguardando aprovacao final)",
+      "fonte_curva": "piramide da inspiracao (pendencia 1)",
+      "curva": [
+        {"fase": "01 Topo", "nota": "Cidra", "inicio": 0, "fim": 21, "reticula": 100},
+        {"fase": "01 Topo", "nota": "Bergamota", "inicio": 0, "fim": 28, "reticula": 70},
+        {"fase": "01 Topo", "nota": "Laranja siciliana", "inicio": 0, "fim": 14, "reticula": 40},
+        {"fase": "02 Coração", "nota": "Néroli", "inicio": 14, "fim": 46, "reticula": 100},
+        {"fase": "02 Coração", "nota": "Gengibre", "inicio": 8, "fim": 37, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Canela", "inicio": 14, "fim": 46, "reticula": 40},
+        {"fase": "03 Fundo", "nota": "Chá preto", "inicio": 28, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Ambroxan", "inicio": 21, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Guaiaco", "inicio": 37, "fim": 58, "reticula": 70},
+        {"fase": "03 Fundo", "nota": "Olíbano", "inicio": 28, "fim": 58, "reticula": 40}
+      ],
+      "legais": {"inci": null, "fabricante": null, "sac": null, "anvisa": null, "lote": null, "ean": null, "status": "pendente"}
+    },
+    {
+      "numero": "02",
+      "nome": "EXPONENCIAL",
+      "_origem": "Dados extraidos das artes anexadas ao handoff (Luva v4 DRAFT e Rotulo v3 DRAFT, 27/08/2026). Nao constam no texto do handoff.",
+      "descritivo": "Especiado. Amadeirado. Profundo.",
+      "frase": "Uma presença que se impõe sem pedir licença.",
+      "modo_de_uso": ["Aplicar nos pontos de pulso e pescoço.", "Manter em local fresco e protegido da luz."],
+      "rodape_verso": "FEITO POR BRASILEIROS",
+      "textos_status": "decisao_design (presente nas artes; aprovacao final pendente)",
+      "fonte_curva": "aparentemente a formula propria (notas descritivas, nao materias-primas) — ver pendencia 1",
+      "curva": [
+        {"fase": "01 Topo", "nota": "Especiado quente", "inicio": 0, "fim": 28, "reticula": 100},
+        {"fase": "01 Topo", "nota": "Fresco especiado", "inicio": 0, "fim": 21, "reticula": 70},
+        {"fase": "01 Topo", "nota": "Lavanda", "inicio": 0, "fim": 14, "reticula": 40},
+        {"fase": "02 Coração", "nota": "Oud", "inicio": 14, "fim": 58, "reticula": 100},
+        {"fase": "02 Coração", "nota": "Patchouli", "inicio": 21, "fim": 46, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Almíscar", "inicio": 21, "fim": 58, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Metálico", "inicio": 14, "fim": 37, "reticula": 40},
+        {"fase": "03 Fundo", "nota": "Amadeirado", "inicio": 28, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Couro", "inicio": 37, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Terroso", "inicio": 37, "fim": 58, "reticula": 40}
+      ],
+      "legais": {
+        "inci": "placeholder na arte: ALCOHOL DENAT., PARFUM (FRAGRANCE), AQUA (WATER), [LISTA INCI COMPLETA A INSERIR]",
+        "fabricante": "placeholder na arte", "sac": "placeholder na arte", "anvisa": "placeholder na arte (Produto notificado na ANVISA sob nº [...])",
+        "lote": "campo LOTE / VAL. em branco", "ean": "placeholder 7 890000 000000 na arte",
+        "status": "pendente — todos os valores da arte sao placeholders, nao definitivos"
+      }
+    },
+    {
+      "numero": "03",
+      "nome": "AMADA",
+      "descritivo": "Floral. Almiscarado. Aveludado.",
+      "frase": "Uma delicadeza que não precisa ser explicada.",
+      "textos_status": "decisao_design (aguardando aprovacao final)",
+      "fonte_curva": "piramide da inspiracao (pendencia 1)",
+      "curva": [
+        {"fase": "01 Topo", "nota": "Aldeídos", "inicio": 0, "fim": 14, "reticula": 100},
+        {"fase": "01 Topo", "nota": "Pêssego branco", "inicio": 0, "fim": 28, "reticula": 70},
+        {"fase": "01 Topo", "nota": "Bergamota", "inicio": 0, "fim": 21, "reticula": 40},
+        {"fase": "02 Coração", "nota": "Flor de laranjeira", "inicio": 8, "fim": 46, "reticula": 100},
+        {"fase": "02 Coração", "nota": "Lírio-do-vale", "inicio": 14, "fim": 37, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Vetiver", "inicio": 21, "fim": 58, "reticula": 40},
+        {"fase": "03 Fundo", "nota": "Almíscar", "inicio": 28, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Ambroxan", "inicio": 21, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Akigalawood", "inicio": 37, "fim": 58, "reticula": 70},
+        {"fase": "03 Fundo", "nota": "Baunilha", "inicio": 37, "fim": 58, "reticula": 40}
+      ],
+      "legais": {"inci": null, "fabricante": null, "sac": null, "anvisa": null, "lote": null, "ean": null, "status": "pendente"}
+    },
+    {
+      "numero": "04",
+      "nome": "MITO",
+      "descritivo": "Especiado. Fumado. Denso.",
+      "frase": "Marcante o bastante para ser lembrado. Denso o bastante para ficar.",
+      "restricao_texto": "'doce' nao deve ser usado como caracteristica principal.",
+      "textos_status": "decisao_design (aguardando aprovacao final)",
+      "fonte_curva": "piramide oficial de Tobacco Vanille (2 notas topo, 2 fundo) — grafico mais esparso; desdobramento em cravo/pimenta e cedro/sandalo so com autorizacao e marcado como interpretacao",
+      "curva": [
+        {"fase": "01 Topo", "nota": "Folha de tabaco", "inicio": 0, "fim": 46, "reticula": 100},
+        {"fase": "01 Topo", "nota": "Especiarias", "inicio": 0, "fim": 21, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Baunilha", "inicio": 14, "fim": 58, "reticula": 100},
+        {"fase": "02 Coração", "nota": "Fava tonka", "inicio": 21, "fim": 58, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Cacau", "inicio": 14, "fim": 37, "reticula": 70},
+        {"fase": "02 Coração", "nota": "Flor de tabaco", "inicio": 14, "fim": 46, "reticula": 40},
+        {"fase": "03 Fundo", "nota": "Madeiras", "inicio": 37, "fim": 58, "reticula": 100},
+        {"fase": "03 Fundo", "nota": "Frutas secas", "inicio": 28, "fim": 58, "reticula": 70}
+      ],
+      "legais": {"inci": null, "fabricante": null, "sac": null, "anvisa": null, "lote": null, "ean": null, "status": "pendente"}
+    }
+  ]
+}
