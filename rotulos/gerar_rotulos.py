@@ -120,12 +120,26 @@ def linha_base(topo, corpo):
 
 
 # ------------------------------------------------------------------- layout --
-# Bloco da marca (posicoes originais preservadas)
-DESTRA_BASE = linha_base(32.220, 8.5)      # 40.43
-LAB_BASE = linha_base(44.440, 8.5)         # 52.65
-# Filete: agora logo abaixo da logo (antes ficava acima de PARFUM)
-FILETE_Y = 62.0
-FILETE_W = 35.433                          # 12,5 mm
+# Bloco da marca. As medidas de referencia abaixo sao as do layout original;
+# LOGO_ESCALA amplia o conjunto inteiro (barras + DESTRA + LAB. + filete) a
+# partir do topo das barras, para a logo nao descer nem mudar de proporcao.
+LOGO_ESCALA = 1.25
+LOGO_ANCORA = 26.474                       # topo das barras, ponto fixo
+DESTRA_TOPO, DESTRA_CORPO, DESTRA_W = 32.220, 8.5, 37.370
+LAB_TOPO, LAB_CORPO, LAB_W = 44.440, 8.5, 26.150
+FILETE_Y_REF = 62.0
+FILETE_PROP = 0.75                         # do LAB.: o filete e mais curto
+
+
+def escala_y(valor):
+    """Aplica LOGO_ESCALA a um Y da logo, fixando o topo das barras."""
+    return LOGO_ANCORA + (valor - LOGO_ANCORA) * LOGO_ESCALA
+
+
+DESTRA_BASE = linha_base(escala_y(DESTRA_TOPO), DESTRA_CORPO * LOGO_ESCALA)
+LAB_BASE = linha_base(escala_y(LAB_TOPO), LAB_CORPO * LOGO_ESCALA)
+FILETE_Y = escala_y(FILETE_Y_REF)
+FILETE_W = LAB_W * LOGO_ESCALA * FILETE_PROP
 # Nome do perfume: fonte fina, caixa alta, entreletra larga
 NOME_BASE = 102.0
 NOME_CORPO = 13.0
@@ -145,17 +159,23 @@ VOLUME_TRACKING = 0.249                    # em, entreletra do layout original
 
 
 def desenhar_arte(c, nome, notas):
-    # codigo de barras decorativo
+    # codigo de barras decorativo, na mesma escala da logo
     c.setFillColor(PRETO)
+    altura = (BARRAS_Y1 - BARRAS_Y0) * LOGO_ESCALA
     for x0, w in BARRAS:
-        c.rect(x0, y(BARRAS_Y1), w, BARRAS_Y1 - BARRAS_Y0, stroke=0, fill=1)
+        c.rect(CX + (x0 - CX) * LOGO_ESCALA, y(BARRAS_Y0 + altura),
+               w * LOGO_ESCALA, altura, stroke=0, fill=1)
 
-    # DESTRA / L A B.  (medidas da logo original preservadas)
-    simples(c, "DESTRA", BOLD, 8.5,
-            tracking_para("DESTRA", BOLD, 8.5, 37.370), DESTRA_BASE)
-    lab_track = (26.150 - pdfmetrics.stringWidth("LAB.", LIGHT, 8.5)) / 2
-    centrado(c, [("LAB", LIGHT, 8.5, lab_track), (".", LIGHT, 8.5, 0.0)],
-             LAB_BASE)
+    # DESTRA / L A B.  (proporcoes da logo original, ampliadas)
+    destra_corpo = DESTRA_CORPO * LOGO_ESCALA
+    simples(c, "DESTRA", BOLD, destra_corpo,
+            tracking_para("DESTRA", BOLD, destra_corpo,
+                          DESTRA_W * LOGO_ESCALA), DESTRA_BASE)
+    lab_corpo = LAB_CORPO * LOGO_ESCALA
+    lab_track = (LAB_W * LOGO_ESCALA
+                 - pdfmetrics.stringWidth("LAB.", LIGHT, lab_corpo)) / 2
+    centrado(c, [("LAB", LIGHT, lab_corpo, lab_track),
+                 (".", LIGHT, lab_corpo, 0.0)], LAB_BASE)
 
     # filete abaixo da logo
     c.setStrokeColor(PRETO)
