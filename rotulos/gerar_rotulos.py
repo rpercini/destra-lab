@@ -5,7 +5,9 @@ Formato: 45 x 60 mm de faca, raio 3 mm, sangria 3 mm (pagina 51 x 66 mm),
 margem de seguranca 3 mm. Preto em 100% K, textos vetoriais com fonte
 embutida (Libre Franklin).
 
-Pagina 1 = arte + marcas (faca em magenta, corte em preto)
+A moldura preta faz parte da arte e sai impressa nas duas paginas.
+
+Pagina 1 = arte + faca em magenta (prova de corte)
 Pagina 2 = arte final, sem marcas
 """
 
@@ -129,6 +131,7 @@ DESTRA_TOPO, DESTRA_CORPO, DESTRA_W = 32.220, 8.5, 37.370
 LAB_TOPO, LAB_CORPO, LAB_W = 44.440, 8.5, 26.150
 FILETE_Y_REF = 62.0
 FILETE_PROP = 0.75                         # do LAB.: o filete e mais curto
+MOLDURA_ESPESSURA = 0.4
 
 
 def escala_y(valor):
@@ -141,11 +144,13 @@ LAB_BASE = linha_base(escala_y(LAB_TOPO), LAB_CORPO * LOGO_ESCALA)
 FILETE_Y = escala_y(FILETE_Y_REF)
 FILETE_W = LAB_W * LOGO_ESCALA * FILETE_PROP
 # Nome do perfume: fonte fina, caixa alta, entreletra larga
-NOME_BASE = 102.0
+NOME_BASE = 113.5
 NOME_CORPO = 13.0
 NOME_TRACKING = 0.22                       # em
-NOME_LARGURA_MAX = 102.0
-# Notas olfativas separadas por bullet
+NOME_LARGURA_MAX = 96.0
+# Notas olfativas: fora da arte por ora (as imagens de referencia nao as tem).
+# Basta ligar NOTAS_VISIVEIS para elas voltarem no mesmo lugar.
+NOTAS_VISIVEIS = False
 NOTAS_BASE = 123.0
 NOTAS_CORPO = 5.2                          # era 4.2: subiu para o corpo do PARFUM
 NOTAS_TRACKING = 0.10                      # em
@@ -159,6 +164,12 @@ VOLUME_TRACKING = 0.249                    # em, entreletra do layout original
 
 
 def desenhar_arte(c, nome, notas):
+    # moldura preta, 3 mm para dentro da faca
+    c.setStrokeColor(PRETO)
+    c.setLineWidth(MOLDURA_ESPESSURA)
+    c.rect(BLEED + SAFE, BLEED + SAFE, TRIM_W - 2 * SAFE, TRIM_H - 2 * SAFE,
+           stroke=1, fill=0)
+
     # codigo de barras decorativo, na mesma escala da logo
     c.setFillColor(PRETO)
     altura = (BARRAS_Y1 - BARRAS_Y0) * LOGO_ESCALA
@@ -189,10 +200,12 @@ def desenhar_arte(c, nome, notas):
     simples(c, nome, LIGHT, corpo, NOME_TRACKING * corpo, NOME_BASE)
 
     # notas olfativas separadas por bullet
-    texto_notas = " • ".join(notas)
-    corpo = corpo_para_caber(texto_notas, LIGHT, NOTAS_CORPO, NOTAS_TRACKING,
-                             NOTAS_LARGURA_MAX)
-    simples(c, texto_notas, LIGHT, corpo, NOTAS_TRACKING * corpo, NOTAS_BASE)
+    if NOTAS_VISIVEIS:
+        texto_notas = " • ".join(notas)
+        corpo = corpo_para_caber(texto_notas, LIGHT, NOTAS_CORPO,
+                                 NOTAS_TRACKING, NOTAS_LARGURA_MAX)
+        simples(c, texto_notas, LIGHT, corpo, NOTAS_TRACKING * corpo,
+                NOTAS_BASE)
 
     # PARFUM
     simples(c, "PARFUM", MEDIUM, RODAPE_CORPO,
@@ -204,21 +217,14 @@ def desenhar_arte(c, nome, notas):
 
 
 def desenhar_marcas(c):
-    """Marcas tecnicas da pagina de prova (nunca entram na arte final).
+    """Marcas tecnicas da pagina de prova — nao entram na arte final.
 
-    Magenta = faca, como no layout original. O quadrado interno, que antes era
-    pontilhado magenta, virou uma linha preta continua — ambos de canto reto.
+    So a faca, em magenta e de canto reto, como no layout original. A moldura
+    preta nao esta aqui: ela e arte e sai nas duas paginas.
     """
-    c.setLineWidth(0.4)
-
-    # faca 45 x 60 mm
     c.setStrokeColor(MAGENTA)
+    c.setLineWidth(0.4)
     c.rect(BLEED, BLEED, TRIM_W, TRIM_H, stroke=1, fill=0)
-
-    # quadrado preto do corte, 3 mm para dentro da faca
-    c.setStrokeColor(PRETO)
-    c.rect(BLEED + SAFE, BLEED + SAFE, TRIM_W - 2 * SAFE, TRIM_H - 2 * SAFE,
-           stroke=1, fill=0)
 
     ficha = "FACA 45 x 60 mm · raio 3 · sangria 3 · seg. 3"
     c.setFillColor(MAGENTA)

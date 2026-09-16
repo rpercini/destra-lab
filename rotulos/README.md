@@ -11,23 +11,29 @@ Quatro rótulos de perfume, um PDF por fragrância.
 | Margem de segurança | 3 mm para dentro da faca |
 | Cor | somente preto, 100% K (sem RGB, sem preto composto) |
 | Tipografia | Libre Franklin, vetorial e embutida no PDF (não precisa enviar fonte) |
-| Corpos | DESTRA / LAB. 10,6 pt, nome 13 pt (reduz nos nomes longos), notas 5,2 pt, PARFUM e volume 4,2 pt |
+| Corpos | DESTRA / LAB. 10,6 pt, nome 13 pt (reduz nos nomes longos), PARFUM e volume 4,2 pt |
+| Moldura | retângulo preto de 0,4 pt, 3 mm para dentro da faca — é arte, sai impressa |
 | Caixas do PDF | BleedBox = página inteira, TrimBox e ArtBox = faca |
 
 Cada arquivo tem **duas páginas**:
 
-1. **Arte + marcas** — retângulo magenta na faca (45 × 60 mm) e retângulo preto
-   do corte, 3 mm para dentro, mais a ficha técnica na área de sangria. Marcas
-   de canto reto, como no layout original. Serve de prova de corte.
-2. **Arte final** — só a arte, sem nenhuma marca. É esta a página que vai para
+1. **Arte + faca** — a arte com o retângulo magenta da faca (45 × 60 mm) e a
+   ficha técnica na área de sangria. Serve de prova de corte.
+2. **Arte final** — só a arte, sem marca nenhuma. É esta a página que vai para
    impressão.
+
+A moldura preta aparece nas duas páginas: ela é elemento de arte, não marca
+de corte.
 
 ## Arquivos
 
-- `Rotulo_01_LIVE.pdf` — CÍTRICO • AROMÁTICO • LUMINOSO
-- `Rotulo_02_EXPONENCIAL.pdf` — ESPECIADO • AMADEIRADO • PROFUNDO
-- `Rotulo_03_AMADA.pdf` — FLORAL • ALMISCARADO • AVELUDADO
-- `Rotulo_04_MITO.pdf` — TABACO • BAUNILHA • ESPECIADO
+- `Rotulo_01_LIVE.pdf`
+- `Rotulo_02_EXPONENCIAL.pdf`
+- `Rotulo_03_AMADA.pdf`
+- `Rotulo_04_MITO.pdf`
+
+As notas olfativas de cada fragrância continuam registradas em `ROTULOS`, mas
+não são impressas. Para trazê-las de volta, basta `NOTAS_VISIVEIS = True`.
 
 ## Como regerar
 
