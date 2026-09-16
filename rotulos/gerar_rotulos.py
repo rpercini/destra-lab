@@ -5,7 +5,7 @@ Formato: 45 x 60 mm de faca, raio 3 mm, sangria 3 mm (pagina 51 x 66 mm),
 margem de seguranca 3 mm. Preto em 100% K, textos vetoriais com fonte
 embutida (Libre Franklin).
 
-Pagina 1 = arte + quadrado preto da faca (prova de corte)
+Pagina 1 = arte + marcas (faca em magenta, corte em preto)
 Pagina 2 = arte final, sem marcas
 """
 
@@ -25,11 +25,11 @@ OUT = BASE
 BLEED = 3 * mm
 TRIM_W, TRIM_H = 45 * mm, 60 * mm
 PAGE_W, PAGE_H = TRIM_W + 2 * BLEED, TRIM_H + 2 * BLEED
-RADIUS = 3 * mm
 SAFE = 3 * mm
 CX = PAGE_W / 2
 
 PRETO = CMYKColor(0, 0, 0, 1)
+MAGENTA = CMYKColor(0, 1, 0, 0)  # so nas marcas tecnicas, nunca na arte
 
 # --------------------------------------------------------------- tipografia --
 LIGHT, MEDIUM, BOLD = "LF-Light", "LF-Medium", "LF-Bold"
@@ -91,14 +91,7 @@ def corpo_para_caber(texto, fonte, corpo, tracking_em, largura_max):
     return min(corpo, largura_max / por_ponto)
 
 
-def tracking_comum(textos, fonte, corpo, tracking_em, largura_max):
-    """Entreletra unica para varios textos: a maior que serve para todos."""
-    limites = [(largura_max - pdfmetrics.stringWidth(t, fonte, corpo))
-               / max(len(t) - 1, 1) for t in textos]
-    return min(tracking_em * corpo, *limites)
-
-
-def centrado(c, blocos, base_top_down):
+def centrado(c, blocos, base_top_down, cor=PRETO):
     """Centra na pagina uma sequencia de trechos (texto, fonte, corpo, track).
 
     Varios trechos permitem tirar a entreletra antes de um caractere — o ponto
@@ -107,7 +100,7 @@ def centrado(c, blocos, base_top_down):
     larguras = [largura(txt, fnt, cp, tr) for txt, fnt, cp, tr in blocos]
     x = CX - sum(larguras) / 2
     t = c.beginText()
-    t.setFillColor(PRETO)
+    t.setFillColor(cor)
     for (txt, fnt, cp, tr), w in zip(blocos, larguras):
         t.setFont(fnt, cp)
         t.setCharSpace(tr)
@@ -117,8 +110,8 @@ def centrado(c, blocos, base_top_down):
     c.drawText(t)
 
 
-def simples(c, texto, fonte, corpo, tracking, base_top_down):
-    centrado(c, [(texto, fonte, corpo, tracking)], base_top_down)
+def simples(c, texto, fonte, corpo, tracking, base_top_down, cor=PRETO):
+    centrado(c, [(texto, fonte, corpo, tracking)], base_top_down, cor)
 
 
 def linha_base(topo, corpo):
@@ -140,18 +133,15 @@ NOME_TRACKING = 0.22                       # em
 NOME_LARGURA_MAX = 102.0
 # Notas olfativas separadas por bullet
 NOTAS_BASE = 123.0
-NOTAS_CORPO = 4.2
-NOTAS_TRACKING = 0.22                      # em
+NOTAS_CORPO = 5.2                          # era 4.2: subiu para o corpo do PARFUM
+NOTAS_TRACKING = 0.10                      # em
 NOTAS_LARGURA_MAX = 106.0
-# Bloco inferior (posicoes originais preservadas)
-PARFUM_BASE = linha_base(140.570, 5.5)     # 145.88
-VOLUME_BASE = linha_base(156.300, 5.0)     # 161.13
-
-
-def notas_tracking():
-    """Entreletra das notas: a mesma nos quatro rotulos."""
-    return tracking_comum([" • ".join(n) for _, _, n in ROTULOS], LIGHT,
-                          NOTAS_CORPO, NOTAS_TRACKING, NOTAS_LARGURA_MAX)
+# Bloco inferior: 1 ponto menor que as notas e entrelinha mais curta
+RODAPE_CORPO = 4.2                         # 1 ponto menor que as notas
+PARFUM_BASE = 150.0
+PARFUM_TRACKING = 0.300                    # em, entreletra do layout original
+VOLUME_BASE = 158.5
+VOLUME_TRACKING = 0.249                    # em, entreletra do layout original
 
 
 def desenhar_arte(c, nome, notas):
@@ -179,27 +169,40 @@ def desenhar_arte(c, nome, notas):
     simples(c, nome, LIGHT, corpo, NOME_TRACKING * corpo, NOME_BASE)
 
     # notas olfativas separadas por bullet
-    simples(c, " • ".join(notas), LIGHT, NOTAS_CORPO, notas_tracking(),
-            NOTAS_BASE)
+    texto_notas = " • ".join(notas)
+    corpo = corpo_para_caber(texto_notas, LIGHT, NOTAS_CORPO, NOTAS_TRACKING,
+                             NOTAS_LARGURA_MAX)
+    simples(c, texto_notas, LIGHT, corpo, NOTAS_TRACKING * corpo, NOTAS_BASE)
 
     # PARFUM
-    simples(c, "PARFUM", MEDIUM, 5.5,
-            tracking_para("PARFUM", MEDIUM, 5.5, 32.370), PARFUM_BASE)
+    simples(c, "PARFUM", MEDIUM, RODAPE_CORPO,
+            PARFUM_TRACKING * RODAPE_CORPO, PARFUM_BASE)
 
     # volume
-    volume = "100 ML · 3.4 FL.OZ"
-    simples(c, volume, LIGHT, 5.0,
-            tracking_para(volume, LIGHT, 5.0, 64.210), VOLUME_BASE)
+    simples(c, "100 ML · 3.4 FL.OZ", LIGHT, RODAPE_CORPO,
+            VOLUME_TRACKING * RODAPE_CORPO, VOLUME_BASE)
 
 
-def desenhar_faca(c):
-    """Quadrado preto da faca (linha de corte) + ficha tecnica na sangria."""
-    c.setStrokeColor(PRETO)
+def desenhar_marcas(c):
+    """Marcas tecnicas da pagina de prova (nunca entram na arte final).
+
+    Magenta = faca, como no layout original. O quadrado interno, que antes era
+    pontilhado magenta, virou uma linha preta continua — ambos de canto reto.
+    """
     c.setLineWidth(0.4)
-    c.roundRect(BLEED, BLEED, TRIM_W, TRIM_H, RADIUS, stroke=1, fill=0)
+
+    # faca 45 x 60 mm
+    c.setStrokeColor(MAGENTA)
+    c.rect(BLEED, BLEED, TRIM_W, TRIM_H, stroke=1, fill=0)
+
+    # quadrado preto do corte, 3 mm para dentro da faca
+    c.setStrokeColor(PRETO)
+    c.rect(BLEED + SAFE, BLEED + SAFE, TRIM_W - 2 * SAFE, TRIM_H - 2 * SAFE,
+           stroke=1, fill=0)
 
     ficha = "FACA 45 x 60 mm · raio 3 · sangria 3 · seg. 3"
-    simples(c, ficha, LIGHT, 3.8, 0.0, linha_base(2.570, 3.8))
+    c.setFillColor(MAGENTA)
+    simples(c, ficha, LIGHT, 3.8, 0.0, linha_base(2.570, 3.8), cor=MAGENTA)
 
 
 def gerar(indice, nome, notas):
@@ -219,7 +222,7 @@ def gerar(indice, nome, notas):
         c.setArtBox((BLEED, BLEED, BLEED + TRIM_W, BLEED + TRIM_H))
         desenhar_arte(c, nome, notas)
         if pagina == "faca":
-            desenhar_faca(c)
+            desenhar_marcas(c)
         c.showPage()
 
     c.save()

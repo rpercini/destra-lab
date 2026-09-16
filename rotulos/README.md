@@ -11,12 +11,14 @@ Quatro rótulos de perfume, um PDF por fragrância.
 | Margem de segurança | 3 mm para dentro da faca |
 | Cor | somente preto, 100% K (sem RGB, sem preto composto) |
 | Tipografia | Libre Franklin, vetorial e embutida no PDF (não precisa enviar fonte) |
+| Corpos | nome 13 pt (reduz nos nomes longos), notas 5,2 pt, PARFUM e volume 4,2 pt |
 | Caixas do PDF | BleedBox = página inteira, TrimBox e ArtBox = faca |
 
 Cada arquivo tem **duas páginas**:
 
-1. **Arte + faca** — mostra o quadrado preto do corte (45 × 60 mm, raio 3) e a
-   ficha técnica na área de sangria. Serve de prova de corte.
+1. **Arte + marcas** — retângulo magenta na faca (45 × 60 mm) e retângulo preto
+   do corte, 3 mm para dentro, mais a ficha técnica na área de sangria. Marcas
+   de canto reto, como no layout original. Serve de prova de corte.
 2. **Arte final** — só a arte, sem nenhuma marca. É esta a página que vai para
    impressão.
 
