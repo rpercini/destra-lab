@@ -1,0 +1,9 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "pageInfo": {"totalResults": 5, "resultsPerPage": 3},
+  "items": [
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste004", "videoPublishedAt": "2022-08-09T10:15:00Z"}},
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste005", "videoPublishedAt": "2021-01-04T23:45:00Z"}},
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste002", "videoPublishedAt": "2024-03-11T21:30:00Z"}}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "nextPageToken": "TOKEN_PAGINA_2",
+  "pageInfo": {"totalResults": 5, "resultsPerPage": 3},
+  "items": [
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste001", "videoPublishedAt": "2024-05-02T18:00:00Z"}},
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste002", "videoPublishedAt": "2024-03-11T21:30:00Z"}},
+    {"kind": "youtube#playlistItem", "contentDetails": {"videoId": "vidTeste003", "videoPublishedAt": "2023-11-20T13:05:00Z"}}
+  ]
+}

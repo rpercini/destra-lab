@@ -1,0 +1,66 @@
+{
+  "kind": "youtube#videoListResponse",
+  "items": [
+    {
+      "kind": "youtube#video",
+      "id": "vidTeste001",
+      "snippet": {
+        "publishedAt": "2024-05-02T18:00:00Z",
+        "title": "Análise da semana: o que vem por aí",
+        "channelTitle": "Canal de Teste"
+      },
+      "contentDetails": {"duration": "PT1H2M10S", "caption": "false", "definition": "hd"},
+      "statistics": {"viewCount": "48210", "likeCount": "3120"}
+    },
+    {
+      "kind": "youtube#video",
+      "id": "vidTeste002",
+      "snippet": {
+        "publishedAt": "2024-03-11T21:30:00Z",
+        "title": "LIVE — apuração ao vivo",
+        "channelTitle": "Canal de Teste"
+      },
+      "contentDetails": {"duration": "PT3H15M", "caption": "false", "definition": "hd"},
+      "statistics": {"viewCount": "192044"},
+      "liveStreamingDetails": {
+        "actualStartTime": "2024-03-11T21:31:02Z",
+        "actualEndTime": "2024-03-12T00:46:15Z",
+        "concurrentViewers": "0"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "id": "vidTeste003",
+      "snippet": {
+        "publishedAt": "2023-11-20T13:05:00Z",
+        "title": "Entrevista com legenda manual",
+        "channelTitle": "Canal de Teste"
+      },
+      "contentDetails": {"duration": "PT45M3S", "caption": "true", "definition": "hd"},
+      "statistics": {"viewCount": "7755"}
+    },
+    {
+      "kind": "youtube#video",
+      "id": "vidTeste004",
+      "snippet": {
+        "publishedAt": "2022-08-09T10:15:00Z",
+        "title": "Recado rápido",
+        "channelTitle": "Canal de Teste"
+      },
+      "contentDetails": {"duration": "PT10S", "caption": "false", "definition": "sd"},
+      "statistics": {}
+    },
+    {
+      "kind": "youtube#video",
+      "id": "vidTeste005",
+      "snippet": {
+        "publishedAt": "2021-01-04T23:45:00Z",
+        "title": "LIVE em andamento (sem duração)",
+        "channelTitle": "Canal de Teste"
+      },
+      "contentDetails": {"duration": "P0D", "caption": "false"},
+      "statistics": {"viewCount": "812"},
+      "liveStreamingDetails": {"actualStartTime": "2021-01-04T23:46:00Z"}
+    }
+  ]
+}
