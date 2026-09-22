@@ -335,6 +335,8 @@ def escolhe_legenda(caminhos: list[Path]) -> tuple[Path, str]:
         if partes is None:
             continue
         pares.append((prioridade_idioma(partes[1]), partes[1], caminho))
+    if not pares:
+        raise ValueError("nenhum arquivo com nome <video_id>.<lang>.json3")
     pares.sort(key=lambda t: t[0])
     _, lang, caminho = pares[0]
     return caminho, lang

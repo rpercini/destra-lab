@@ -398,7 +398,7 @@ def monta_resumo(videos: list[Video], canal: str, destino: Path, quota: int = 0)
     ]
     if sem_duracao:
         linhas.append(
-            f"Sem duração publicada .. {sem_duracao} (lives em andamento ou "
+            f"Sem duração ........... {sem_duracao} (lives em andamento ou "
             "vídeos indisponíveis)"
         )
     linhas += [

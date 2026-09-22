@@ -4,12 +4,12 @@
   "items": [
     {
       "kind": "youtube#channel",
-      "id": "UCtest0000000000000000A",
+      "id": "UCtest00000000000000000A",
       "snippet": {"title": "Canal de Teste"},
       "contentDetails": {
         "relatedPlaylists": {
           "likes": "",
-          "uploads": "UUtest0000000000000000A"
+          "uploads": "UUtest00000000000000000A"
         }
       }
     }

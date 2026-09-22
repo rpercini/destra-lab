@@ -51,16 +51,30 @@ fechada — rode isto antes de qualquer outra coisa.
 ### 2. Legendas — grátis, algumas horas
 
 ```bash
-python 02_legendas.py --jobs 2 --sleep 2
+python 02_legendas.py --jobs 1 --sleep-requests 2
 ```
 
-Baixa as legendas em formato `json3`, que traz timing palavra por palavra. É
-retomável: se interromper, rode de novo e ele continua de onde parou. **Não
-aumente `--jobs` sem necessidade** — o YouTube bloqueia por excesso de
-requisições, e aí a pausa é de horas.
+Baixa as legendas em formato `json3` — o único que traz timing palavra por
+palavra, que é do que a etapa 3 precisa para cortar com precisão.
+
+**Não acelere.** O padrão `--sleep-requests 2 --jobs 1` é de propósito: sem
+pausa, o YouTube começa a responder `HTTP 429` ou `Sign in to confirm you're not
+a bot` depois de algumas dezenas de vídeos e derruba o resto da fila — em geral
+o IP fica de castigo por horas. Com o padrão, 875 vídeos levam algumas horas;
+deixe rodando e vá fazer outra coisa. `--jobs` acima de 3 praticamente garante o
+bloqueio.
+
+É retomável: vídeo que já tem arquivo em `dados/legendas/` é pulado sem nem
+chamar o yt-dlp. Pode interromper com Ctrl+C e rodar de novo. Use `--forcar`
+para rebaixar tudo.
 
 Os vídeos sem legenda disponível vão para `dados/sem_legenda.txt`; esses
 precisam de Whisper (ver *Plano B* abaixo).
+
+O campo `legendas_disponiveis`, preenchido aqui, é a **confirmação real** de
+quem tem legenda. O `tem_legenda_api` da etapa 1 vem do `contentDetails.caption`
+da API, que marca `"false"` para quase toda legenda automática — não serve para
+decidir nada, só como sinal fraco.
 
 ### 3. Chunks — grátis, minutos
 

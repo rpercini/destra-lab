@@ -18,8 +18,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
-import re
 import shutil
 import subprocess
 import sys
@@ -107,7 +105,7 @@ def idiomas_no_disco(video_id: str, dir_legendas: Path) -> list[str]:
         miolo = arquivo.name[len(video_id) + 1 : -len(".json3")]
         if miolo:
             idiomas.append(miolo)
-    return idiomas
+    return sorted(idiomas)
 
 
 # --------------------------------------------------------------------------
@@ -165,10 +163,13 @@ def baixa_legenda(
     max_attempts: int = TENTATIVAS_PADRAO,
     timeout: int = TIMEOUT_PADRAO,
     forcar: bool = False,
-    executor: Callable[..., subprocess.CompletedProcess] = subprocess.run,
-    dormir: Callable[[float], None] = time.sleep,
+    executor: Optional[Callable[..., subprocess.CompletedProcess]] = None,
+    dormir: Optional[Callable[[float], None]] = None,
 ) -> Resultado:
     """Baixa (ou confirma) as legendas de um vídeo. Nunca levanta exceção."""
+    # Resolvidos aqui (e não no default) para que os testes possam substituí-los.
+    executor = executor or subprocess.run
+    dormir = dormir or time.sleep
     existentes = idiomas_no_disco(video.video_id, dir_legendas)
     if existentes and not forcar:
         return Resultado(video.video_id, "pulado", existentes)
@@ -282,7 +283,7 @@ def processa(
         progresso.registra(resultado)
         # Pausa só depois de bater no YouTube de verdade (pular é de graça).
         if resultado.estado != "pulado" and pausa_entre_videos > 0:
-            kwargs.get("dormir", time.sleep)(pausa_entre_videos)
+            (kwargs.get("dormir") or time.sleep)(pausa_entre_videos)
         return resultado
 
     if jobs <= 1:
